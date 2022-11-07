@@ -1,2 +1,0 @@
-Enter Some Random String = derop
-No, the above given string is not a lapindrome
