@@ -1,2 +1,0 @@
-Enter some random String = aswer
-The given String's { aswer } Lexicographic Rank =  17
