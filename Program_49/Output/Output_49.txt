@@ -1,3 +1,0 @@
-Enter some random password = sder
-The original Password =  sder
-The new modified password =  $der
