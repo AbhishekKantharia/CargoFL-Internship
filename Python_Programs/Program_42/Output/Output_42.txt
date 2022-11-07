@@ -1,0 +1,2 @@
+Enter some random string = dewrt
+The given string after removal of any Non-ASCII Characters =  dewrt

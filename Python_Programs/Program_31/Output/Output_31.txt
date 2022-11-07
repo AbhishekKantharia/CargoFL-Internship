@@ -1,0 +1,3 @@
+Enter the given random string = guijkl
+The given string before modification =  guijkl
+The given string after modification =  gik

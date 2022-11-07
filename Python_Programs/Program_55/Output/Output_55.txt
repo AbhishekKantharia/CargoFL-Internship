@@ -1,0 +1,2 @@
+Enter some random number = 34
+Different ways the 34 friends can get to the party =  881687990282453393920

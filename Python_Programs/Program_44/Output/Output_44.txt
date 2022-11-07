@@ -1,0 +1,3 @@
+Enter some Random String = dances
+Enter some Random String = dancer
+The Common Characters between the above given two Strings =  acden

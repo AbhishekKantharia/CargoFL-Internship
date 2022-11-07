@@ -1,0 +1,2 @@
+Enter some random List Elements separated by spaces = 2 3 4
+The given list [2, 3, 4] is in AP

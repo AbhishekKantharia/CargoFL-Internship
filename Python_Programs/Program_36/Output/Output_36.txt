@@ -1,0 +1,4 @@
+Enter some random string = foity
+Enter some random string = moyu
+The given string{ foity } is not a keyword
+The given string{ moyu } is not a keyword
