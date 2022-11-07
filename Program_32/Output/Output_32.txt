@@ -1,0 +1,3 @@
+Enter some random string =sdfgh
+Total characters present in given string { sdfgh } = 5
+Total words present in given string { sdfgh } = 1

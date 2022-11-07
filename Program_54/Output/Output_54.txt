@@ -1,0 +1,13 @@
+postal_code                 75013
+country_code                   FR
+place_name        Paris 13, Paris
+state_name          Île-de-France
+state_code                   11.0
+county_name                 Paris
+county_code                    75
+community_name              Paris
+community_code                751
+latitude                  48.8322
+longitude                 2.35245
+accuracy                        5
+Name: 0, dtype: object

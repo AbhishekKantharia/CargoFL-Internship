@@ -1,0 +1,29 @@
+# Give the string as user input using the input() function and store it in the variable.
+
+gven_stng = input('Enter some random string = ')
+
+# Take a new empty string to store only characters from the above Given String
+
+only_chrs = ""
+
+# Traverse in this given string using the For loop
+
+for chrs in gven_stng:
+    # Inside the for loop, Check each letter of the above given string is only a character
+    # or not by using ord( char) method .
+    # Ord( ) method gives the ASCII values of the character.
+    # Check the elements of the given string are Upper case Characters by using if conditional
+    # statement and concat it to the above declared new string.
+    if ord(chrs) >= 65 and ord(chrs) <= 90:
+        only_chrs += chrs
+
+# Else Check for the Lower case Characters by using Elif conditional statement and
+
+# concat it to the above declared  new string.
+
+    elif ord(chrs) >= 97 and ord(chrs) <= 122:
+        only_chrs += chrs
+
+# print the above declared new String(has only characters).
+
+print('The Given String after extracting only characters =', only_chrs)
