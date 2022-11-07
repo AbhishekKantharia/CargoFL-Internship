@@ -1,0 +1,1 @@
+SELECT name, COALESCE(mobile, '07986 444 2266') mobile FROM teacher
