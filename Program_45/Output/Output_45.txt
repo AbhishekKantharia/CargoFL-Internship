@@ -1,2 +1,0 @@
-Enter some random String = forensic
-The Number of Characters in a given string { forensic } =  8
