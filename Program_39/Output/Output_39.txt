@@ -1,2 +1,0 @@
-Enter some random string = yuipr
-The given string after entering '*' between two identical characters= yuip
