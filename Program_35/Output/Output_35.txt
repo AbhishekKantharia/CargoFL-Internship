@@ -1,3 +1,0 @@
-Enter some random string = ftyuo
-Enter some random substring = tyu
-The substring [ tyu ] is found in [ ftyuo ]
