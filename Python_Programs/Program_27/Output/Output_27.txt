@@ -1,0 +1,4 @@
+Printing the given string before reversing :
+HellothisisBTechGeeks
+Printing the given string after reversing :
+skeeGhceTBsisihtolleH

@@ -1,0 +1,2 @@
+Enter the number of your choice :-31
+The given number 31 is prime number

@@ -1,0 +1,13 @@
+Enter the number whose value is to be pushed into the Stack:- 4
+New element added :  4
+Enter the number whose value is to be pushed into the Stack:- 6
+New element added :  6
+Enter the number whose value is to be pushed into the Stack:- 7
+New element added :  7
+Enter the number whose value is to be pushed into the Stack:- 12
+New element added :  12
+Enter the number whose value is to be popped out of the Stack:- 10
+New element added :  10
+10 is removed from stack
+Printing the stack after modification [4, 6, 7, 12]
+The top element from the stack is  12

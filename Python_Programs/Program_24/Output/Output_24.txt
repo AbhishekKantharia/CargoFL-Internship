@@ -1,0 +1,25 @@
+Printing all permutations of the given string cold
+cold
+codl
+clod
+cldo
+cdlo
+cdol
+ocld
+ocdl
+olcd
+oldc
+odlc
+odcl
+locd
+lodc
+lcod
+lcdo
+ldco
+ldoc
+dolc
+docl
+dloc
+dlco
+dclo
+dcol

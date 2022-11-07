@@ -1,0 +1,2 @@
+Enter a Number:- 2
+the given number upto 4 decimal places 2.0000

@@ -1,0 +1,12 @@
+# Import Nominatim from geocoders of geopy module using the import keyword 
+from geopy.geocoders import Nominatim
+# Create an object for Nominatim() class by passing some random user_agent as an argument to it.
+# Here user_agent is the app name to which it is provides services.
+location = Nominatim(user_agent= "GetLocationdetails")
+
+# Pass latitudes and longitudes coordinates as arguments to the reverse() function to get the
+# location name and store it in a variable.
+loc_name = location.reverse("19.0759899,  72.8773928")
+# Get the address of the above given location using the address attribute
+print("The Address of the  from the given latitudes and longitudes: ")
+print(loc_name.address)

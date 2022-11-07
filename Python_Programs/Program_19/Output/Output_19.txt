@@ -1,0 +1,1 @@
+The given number 12321 is palindrome

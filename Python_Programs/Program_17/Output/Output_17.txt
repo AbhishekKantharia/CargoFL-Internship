@@ -1,0 +1,2 @@
+The total number of set bits in the given number  4322  :
+5

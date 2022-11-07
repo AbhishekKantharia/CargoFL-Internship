@@ -1,0 +1,2 @@
+Enter the number in Celsius in °C 22
+Converting the given temp from 22.0 °C to 71.6 °F

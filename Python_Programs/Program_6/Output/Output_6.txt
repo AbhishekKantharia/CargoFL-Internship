@@ -1,0 +1,10 @@
+Enter the given number:- 54
+printing the factors of given number :
+1
+2
+3
+6
+9
+18
+27
+54

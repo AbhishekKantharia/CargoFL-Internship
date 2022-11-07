@@ -1,0 +1,29 @@
+# Import parse from urllib module using the import keyword 
+import math
+# Perform the Unary encoding by using the lambda function
+unary_encoding = lambda num: num * '0' + '1'
+# Perform the binary encoding by using the lambda function
+binary_encoding = lambda num, l = 1:("{0:0%db}" % l).format(num)
+# Create a function say eliasEncoding() which returns the Elias Encoded string for the given number
+def eliasEncoding(num):
+    # Check if the number is equal to 0 using the if conditional statement
+    if(num==0):
+        # If it is true then return '0'
+        return '0'
+    
+    # Get the base-2 log value of the given number using the log() function and 
+    # Store it in a variable
+    logval = int(math.log(num, 2))
+ 
+    b = num - 2 ** logval
+    # Pass the above log value to the unary_encoding() function and b, log value to the binary_encoding() function
+    # and sum up both the unary and binary encoded values  
+    rslt = unary_encoding(logval) + binary_encoding(b, logval)
+    # Return the above result
+    return rslt
+
+# Pass some random number to the above created eliasEncoding() function 
+# to perform the Elias Encoding operation and print the result
+
+    print(eliasEncoding(int(input("Enter the given number to be encoded:- "))))
+    print("The Elias Encoding of the given number is:-")

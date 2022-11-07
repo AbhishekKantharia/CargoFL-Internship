@@ -1,0 +1,1 @@
+The majority element present in the givenlist [4, 11, 13, 9, 11, 11, 11, 3, 15, 28, 11, 11, 11, 11] = 11

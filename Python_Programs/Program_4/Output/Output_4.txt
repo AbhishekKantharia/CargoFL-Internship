@@ -1,0 +1,3 @@
+Enter the first number:- 35
+Enter the second number:- 22
+The Highest Common Factor (HCF) of the numbers 35 22 = 1

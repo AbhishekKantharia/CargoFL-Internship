@@ -1,0 +1,2 @@
+printing the given string after removing the punctuations :
+BTechGeeks is best for Python

@@ -1,0 +1,6 @@
+Enter the first number:- 45
+Enter the second number:- 54
+Adding the given two numbers 45.0 + 54.0 = 99.0
+Subtracting the given two numbers 45.0 - 54.0 = -9.0
+Multiplying the given two numbers 45.0 * 54.0 = 2430.0
+Dividing the given two numbers 45.0 / 54.0 = 0.8333333333333334

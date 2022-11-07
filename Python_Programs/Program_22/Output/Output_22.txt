@@ -1,0 +1,2 @@
+Before removing white spaces given string=           B  t      echG   eeks
+after removing white spaces given string= BtechGeeks
