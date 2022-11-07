@@ -1,2 +1,0 @@
-Enter some random number = 45
-The given number 45 is odd
