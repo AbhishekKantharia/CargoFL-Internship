@@ -1,0 +1,4 @@
+       Name    Team Position  Number  Age Height  Weight   College  Salary
+ind1  Geeks  Boston       PG       3   33    6-2      89       MIT   99999
+ind2  Peter  Boston       PG       4   25    6-4      79       MIT   99994
+ind4   Jack   Chele       PG      11   35    6-1      78  Stanford   78889

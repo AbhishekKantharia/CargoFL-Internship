@@ -1,0 +1,20 @@
+# Import fuzz from fuzzywuzzy module using the import keyword
+from fuzzywuzzy import fuzz  
+
+# Give the string as static input and store it in a variable.
+gvn_str1 = "Hello this is btechgeeks"  
+# Give the string as static input and store it in a variable.
+gvn_str2 = "this btechgeeks hello is"  
+
+# Check if both the given strings are similar using the fuzz.token_sort_ratio() function
+# by passing given both strings as arguments to it.
+# Here both the strings are similar but differ in their order of string. 
+# Hence it returns 100
+print(fuzz.token_sort_ratio(gvn_str1, gvn_str2))
+
+# Similarly check with the other strings and print the result
+print(fuzz.token_sort_ratio("Hello this btechgeeks", "Hello this this btechgeeks"))
+
+# Here it returns 100 since the duplicate words are treated as a single word
+# by the token_set_ratio() function
+print(fuzz.token_set_ratio("Hello this btechgeeks", "Hello this this btechgeeks"))

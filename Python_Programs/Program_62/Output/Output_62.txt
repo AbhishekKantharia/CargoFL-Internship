@@ -1,0 +1,2 @@
+The original string is : <b>Gfg</b> is <b>Best</b>. I love <b>Reading CS</b> from it.
+The Strings extracted : ['Gfg', 'Best', 'Reading CS']

@@ -1,0 +1,3 @@
+Enter the String ASD45
+LETTERS 3
+DIGITS 2

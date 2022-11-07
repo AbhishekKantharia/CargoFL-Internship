@@ -1,0 +1,13 @@
+Given Dataframe :
+         Name  Age    Stream  Percentage
+0      Ankit   21      Math          88
+1       Amit   19  Commerce          92
+2  Aishwarya   20   Science          95
+3   Priyanka   18      Math          70
+4      Priya   17      Math          65
+5    Shaurya   21   Science          78
+
+Result dataframe :
+       Name  Age   Stream  Percentage
+0    Ankit   21     Math          88
+5  Shaurya   21  Science          78
