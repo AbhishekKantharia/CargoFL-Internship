@@ -1,4 +1,0 @@
-Enter some Random String = lottr
-The above given string = lottr
-Enter some Random Number = 32
-The above Given string with added given number of trailing zeros =  lottr00000000000000000000000000000000
