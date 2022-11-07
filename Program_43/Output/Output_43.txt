@@ -1,2 +1,0 @@
-Enter some random string = ertuio
-The Given String after extracting only characters = ertuio
