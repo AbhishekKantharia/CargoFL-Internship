@@ -1,4 +1,0 @@
-Enter some random string = filthy
-Enter some random number = 1
-The given string after dividing into 1 equal halves:
-filthy
