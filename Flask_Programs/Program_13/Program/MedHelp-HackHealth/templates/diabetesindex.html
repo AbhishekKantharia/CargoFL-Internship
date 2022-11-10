@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Diabetes Prediction</title>
+    <style>
+        /* Various CSS stylings added  */
+        body {
+            background-color: #edc4b3;
+        }
+        
+        form {
+            width: 1000px;
+            border: 1px solid gray;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        h1 {
+            color: #780000;
+        }
+        
+        input {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <!-- Main Heading added -->
+        <h1>Know If You Are Affected By Diabetes Or Not</h1>
+        
+        <!-- Form Code Starts which takes 4 features as input -->
+        <!-- The 4 features are - Glucose Rate, Insulin Rate, Body Mass Index, Age -->
+        <form action="/di" method="post">
+            <div class="mb-3">
+                Enter Glucose Rate
+                <input type="text" name="glucose" min="0" max="200" placeholder="Enter a number in 0-200" required="required" />
+            </div>
+            <br>
+            <div class="mb-3">
+                Enter Insulin Rate
+                <input type="text" name="insulin" min="0" max="850" placeholder="Enter a number in 0-850" required="required" />
+            </div>
+            <br>
+            <div class="mb-3">
+                Enter Body Mass Index
+                <input type="text" name="bmi" min="0" max="70" placeholder="Enter a number in 0-70" required="required" />
+            </div>
+            <br>
+            <div class="mb-3">
+                Enter Age
+                <input type="text" name="age" min="20" max="80" placeholder="Enter a number in 20-80" required="required" />
+            </div>
+            <br>
+
+            <input type="submit" class="btn btn-primary btn-block btn-large" value="Predict">
+        </form>
+
+        <br>
+        <br> 
+        <!-- The variable which stores and displays the prediction to the user -->
+        {{ prediction_text1 }}
+
+    </div>
+
+
+</body>
+
+</html>

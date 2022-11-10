@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Disease Prediction</title>
+    <style>
+        /* Various CSS stylings added  */
+        body {
+            background-color: #dde5b6;
+        }
+        
+        form {
+            width: 1000px;
+            border: 1px solid gray;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        h1 {
+            color: #007200;
+        }
+        
+        input {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <!-- Main Heading added -->
+        <h1>Know If You Are Affected By Heart Disease Or Not</h1>
+        
+        <!-- Form Code Starts which takes 4 features as input -->
+        <!-- The 4 features are - Chest Pain Rate, Blood Pressure Rate, Cholestrol Rate, Maximum Heart Rate -->
+        <form action="/hi" method="post">
+            <div class="mb-3">
+                Enter Chest Pain Rate
+                <input type="text" name="chestpain" max="4" min="1" placeholder="Enter a number from 1-4" required="required" />
+            </div>
+            <br>
+            <div class="mb-3">
+                Enter Blood Pressure Rate
+                <input type="text" name="bp" max="200" min="95" placeholder="Enter a number from 95-200" required="required" />
+            </div>
+            <br>
+            <div class="mb-3">
+                Enter Cholestrol Rate
+                <input type="text" name="cholestrol" min="125" max="565" placeholder="Enter a number from 125-565" required="required" />
+            </div>
+            <br>
+            <div class="mb-3">
+                Enter Maximum Heart Rate
+                <input type="text" name="maxhr" min="70" max="200" placeholder="Enter a number from 70-200" required="required" />
+            </div>
+            <br>
+
+            <input type="submit" class="btn btn-primary btn-block btn-large" value="Predict">
+        </form>
+
+        <br>
+        <br> 
+        <!-- The variable which stores and displays the prediction to the user -->
+        {{ prediction_text3 }}
+
+    </div>
+
+</body>
+
+</html>

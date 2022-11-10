@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        /* Various CSS stylings added  */
+        body {
+            background-color: #c9d8f3;
+        }
+        
+        h1 {
+            text-align: center;
+            color: maroon;
+            font-size: 70px;
+        }
+        
+        img {
+            margin-top: 50px;
+            justify-content: center;
+        }
+        
+        .my-title {
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        .navbar {
+            background-color: #2b2d42;
+        }
+        
+        .card {
+            background-color: #f2e9e4;
+            border-radius: 30px;
+        }
+    </style>
+    <title>Medical Help App</title>
+</head>
+
+<body>
+    <nav class="navbar text-light">
+        <div class="container-fluid">
+            <!-- Main Heading - Name of the Application added -->
+            <span class="my-title mb-0 h1">MedHelp HackHealth</span>
+        </div>
+    </nav>
+    
+    <!-- Home Page main Image added -->
+    <div class="container mb-5" style="width: 60vw; margin: 0 auto;">
+        <img style="width: 60vw;" src="/static/homeimage.jpg" alt="hero image">
+    </div>
+
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <!-- Diabetes Prediction Card added -->
+            <div class="col-md-3 col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="/static/diabetescard.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Diabetes Prediction</h5>
+                        <p class="card-text">Want to know if you are affected by Diabetes?</p>
+                        <a href="/d" class="btn btn btn-success">Click Here</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Covid-19 Card added -->
+            <div class="col-md-3 col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="/static/covid19card.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Covid-19 Prediction</h5>
+                        <p class="card-text">Want to know if you are affected by Covid-19?</p>
+                        <a href="/c" class="btn btn btn-success">Click Here</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Heart Disease Card added -->
+            <div class="col-md-3 col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="/static/heartdiseasecard.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Heart Disease Prediction</h5>
+                        <p class="card-text">Want to know if you are affected by Heart Disease?</p>
+                        <a href="/h" class="btn btn btn-success">Click Here</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Medical Suggestions card added -->
+            <div class="col-md-3 col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="/static/suggestionscard.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Medical Suggestions</h5>
+                        <p class="card-text">Affected by any of the above diseases? Now what next?</p>
+                        <a href="/m" class="btn btn btn-success">Click Here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+
+</html>
+</body>
