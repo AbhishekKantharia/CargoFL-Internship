@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="cid-rdx7D8mEWW mbr-fullscreen mbr-parallax-background" id="header2-0">
+    <div class="container align-center">
+        <div class="row justify-content-md-center">
+            <div class="mbr-white col-md-10">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                      {% for category, message in messages %}
+                          {% if category == 'message' %}
+                            <div class="alert alert-warning" role="alert">
+                          {% else %}
+                            <div class="alert alert-{{ category }}" role="alert">
+                          {% endif %}
+                            <font face="verdana" size="4em">{{ message }}
+                          </div>
+                      {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">
+                    <u>Notes Go</u>
+                </h1>
+                
+                <p class="mbr-text pb-3 mbr-fonts-style display-5">
+                   Introducing NotesGo a simple yet effective way to get notes, right into your inbox.
+                   <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">📧</h1>
+                </p>
+                <div class="mbr-section-btn">
+                    <a class="btn btn-md btn-secondary display-4" href="https://mobirise.co">LEARN MORE</a>
+                    <a class="btn btn-md btn-white-outline display-4" href="https://mobirise.co">LIVE DEMO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
+        <a href="#next">
+            <i class="mbri-down mbr-iconfont"></i>
+        </a>
+    </div>
+</section>
+
+<section class="cid-rcAGbakVlo mbr-fullscreen mbr-parallax-background" id="header15-2">
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(7, 59, 76);"></div>
+    <div class="container align-right">
+    <div class="row">
+        <div class="mbr-white col-lg-8 col-md-7 content-container">
+            <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">
+                Start Here 📧
+            </h1>
+            <p class="mbr-text pb-3 mbr-fonts-style display-5">
+                All you need to do is enter your Name, Email and Semester you are in.
+            </p>
+        </div>
+        <div class="col-lg-4 col-md-5">
+        <div class="form-container">
+            <div class="media-container-column">
+                
+                <form class="mbr-form" action="/notes" method='post'>
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                        <div class="form-group">
+                            <input type="text" class="form-control px-3" name="name"  placeholder="Name" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control px-3" name="email"  placeholder="Email" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control px-3" name="semester"  placeholder="Semester" required=" " min="1" max="8">
+                        </div>
+                    <span class="input-group-btn">
+                        <button  type="submit" class="btn btn-secondary btn-form display-4">SEND FORM</button>
+                    </span>
+                </form>
+   
+            </div>
+        </div>
+        </div>
+    </div>
+        </div>
+        <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
+            <a href="#next">
+                <i class="mbri-down mbr-iconfont"></i>
+            </a>
+        </div>
+</section>
+    
+<section class="features1 cid-rcAGzjbFPW" id="features1-3">
+        <div class="container">
+            <div class="media-container-row">
+    
+                <div class="card p-3 col-12 col-md-6 col-lg-4">
+                    <div class="card-img pb-3">
+                        <span class="mbri-bootstrap mbr-iconfont"></span>
+                    </div>
+                    <div class="card-box">
+                        <h4 class="card-title py-3 mbr-fonts-style display-5">
+                            Fill in your particulars.
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            Name, Email and Semester
+                            </p>
+                    </div>
+                </div>
+    
+                <div class="card p-3 col-12 col-md-6 col-lg-4">
+                    <div class="card-img pb-3">
+                        <span class="mbri-touch mbr-iconfont"></span>
+                    </div>
+                    <div class="card-box">
+                        <h4 class="card-title py-3 mbr-fonts-style display-5">
+                            Select the Note's pdf
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            We try our best to get the pdf's of all the Notes. As it is more convenient than images or docs.
+                            </p>
+                    </div>
+                </div>
+    
+                <div class="card p-3 col-12 col-md-6 col-lg-4">
+                    <div class="card-img pb-3">
+                        <span class="mbri-responsive mbr-iconfont"></span>
+                    </div>
+                    <div class="card-box">
+                        <h4 class="card-title py-3 mbr-fonts-style display-5">
+                            Check your Inbox
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            It usally takes no more than 5 minutes for the mail to be delivered.
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+    
+
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block css %}
+    .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;}
+{% endblock %}
+{% block content %}
+<div id='my-css-2' style="margin-top:5em;"></div>
+<div class="container">
+    <h1>Hi, <font face="verdana" size="9em"><b>{{content.name| title}}</b></font></h1>
+    <font face="verdana" size="3em" color="gray"> Select the notes you want and click on submit. It usally takes 2 minutes to complete your request.</font>
+    <hr/><br/>
+    <form method="post" action='/send'>
+       <font face="verdana">
+            {% for note in content.notes%}
+            <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                    <input class="form-check-input" id="inlineCheckbox1" type="checkbox" name="notes" value="{{note.id}}">
+                    <b>{{note.subjectTitle|upper}}</b> : <font face="georgia">{{note.chapterName|title}}</font>
+                </label>
+            </div>
+            {% endfor %}
+        </font>  
+        <hr/>
+        <h4></h4>
+        <input type="submit" id="btncheck" class="btn btn-secondary btn-form display-4">
+    </form>
+    <font face="verdana" size="3em" color="gray">Contact us if you didn't find the notes, you were looking for.</font>
+    
+</div>
+
+                  
+{% endblock content %}
+
+        
+      
