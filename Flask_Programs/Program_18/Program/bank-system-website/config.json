@@ -1,0 +1,7 @@
+{
+    "params":
+    {
+        "local_server":"True",
+        "local_uri": "mysql+mysqlconnector://@localhost/sys"
+    }
+}
