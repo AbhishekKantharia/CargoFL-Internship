@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block content %}
+   <div class="container">
+      <div class="jumbotron">
+        <h1>Instances View</h1>
+          <p></p>
+      </div>
+     <div class="row">
+         <div class="col-md-2">容器名</div>
+         <div class="col-md-2">ID</div>
+         <div class="col-md-2">状态</div>
+         <div class="col-md-2">创建时间</div>
+         <div class="col-md-4">操作</div>
+
+         {% for comment in comments %}
+             <div class="w-100"></div>
+             <div class="col-md-2">{{ comment.name }}</div>
+             <div class="col-md-2">{{ comment.short_id }}</div>
+             <div class="col-md-2">{{ comment.status }}</div>
+             <div class="col-md-2">{{ comment.created }}</div>
+
+
+             <form action="{{ url_for('instance_management.restart_instance',instance_id=comment.short_id) }}" method="post">
+                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                 <input class="col-lg-2 btn btn-warning" type="submit" value="Restart" />
+             </form>
+             <form action="{{ url_for('instance_management.stop_instance',instance_id=comment.short_id) }}" method="post">
+                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                 <input class="col-lg-2 btn btn-danger" type="submit" value="Stop" />
+             </form>
+         {% endfor %}
+    </div>
+
+
+   </div>
+
+{% endblock %}

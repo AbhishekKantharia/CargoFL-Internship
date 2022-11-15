@@ -1,0 +1,9 @@
+psp:
+   image: vonsago/psp:2.0
+   ports:
+    - "8005:5000"
+   volumes:
+    - /usr/local/bin/docker:/usr/bin/docker
+    - /var/run/docker.sock:/var/run/docker.sock
+   environment:
+    - CONFIG_NAME=PRO

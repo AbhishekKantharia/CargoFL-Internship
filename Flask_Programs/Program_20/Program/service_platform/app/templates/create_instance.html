@@ -1,0 +1,29 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% extends "index.html" %}
+
+
+{% block content %}
+   <div class="container">
+      <div class="jumbotron">
+        <h1>Create a service and run it.</h1>
+          <p>Eg: </p>
+          <p>image: mysql:5.7.19</p>
+          <p>port: 3306 </p>
+          <p>volumes: mysqldata:/var/lib/mysql, </p>
+      </div>
+   <div class="col-md-12">
+{#       <form method="POST" action="/v1/instance">#}
+{#        {{ form.csrf_token }}#}
+{#        {{ form.image.label }}#}
+{#        {{ form.image }}#}
+{#        {{ form.port.label }}#}
+{#        {{ form.port }}#}
+{#        {{ form.volumes.label }}#}
+{#        {{ form.volumes }}#}
+{#        {{ form.submit }}#}
+{#       </form>#}
+       {{wtf.quick_form(form, button_map={'submit': 'primary'}, action="/v1/instance")}}
+   </div>
+   </div>
+{% endblock %}

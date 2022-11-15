@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.mirrors.ustc.edu.cn/simple/"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+docker = "*"
+sqlalchemy = "*"
+alembic = "*"
+sqlalchemy-utils = "*"
+flask-bootstrap = "*"
+flask-caching = "*"
+flask-wtf = "*"
+marshmallow = "*"
+pytest = "*"
+flask-cors = "*"
+
+[dev-packages]
+requests = ">=2.20.0"
+
+[requires]
+python_version = "3.6"
