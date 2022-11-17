@@ -1,0 +1,244 @@
+{% extends 'base2.html' %}
+
+
+{% block body %}
+{% include 'Navbar.html' %}
+<style>
+    /* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  font: 400 16px/1.5 'Roboto',"Helvetica Neue",Helvetica,Arial,sans-serif;
+  /* background-color: rgb(231, 231, 231); */
+  color: #5a5a5a;
+
+}
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  /* rtl:remove */
+  letter-spacing: -.05rem;
+}
+.vehicle-card{
+  min-width: 300px;
+}
+
+.vehicle-card:hover{
+  box-shadow: 0 0 20px 5px #aaa;
+  transition: all .3s ease-out;
+}
+
+.vehicle-card, .vehicle-card > *{
+  text-decoration: none;
+  color: #5a5a5a;
+
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	.navbar .nav-item:hover .nav-link{   }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}	
+</style>
+<main>
+<!-- Carousel boostrap 5--> 
+
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner " >
+      <div class="carousel-item active">
+        <img style="object-fit: cover;" src="{{url_for('static', filename='images/car5.jpg')}}" class="d-block w-100" alt="..." height="500px" width="120px">
+      </div>
+      <div class="carousel-item">
+        <img style="object-fit: cover;" src="{{url_for('static', filename='images/car3.jpg')}}" class="d-block w-100" alt="..." height="500px" width="120px">
+      </div>
+      <div class="carousel-item overlay-image">
+        <img style="object-fit: cover;" src="{{url_for('static', filename='images/car4.jpg')}}" class="d-block w-100" alt="..." height="500px" width="120px">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+<!--End of carousel-->
+
+
+
+
+
+<div class="container">
+    <div class="row">    
+      {% if brand %}  
+      {% for bra in brand.items %}
+        <div class="col-md-3 mt-3">
+            <a href="{{url_for('view_single_page', id=bra.id)}}" class="card h-100 vehicle-card">
+                  <img style="object-fit: cover;" src="{{url_for('static', filename='images/' + bra.image_1)}}" class="card-img-top" alt="{{bra.name}}" height="200">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{bra.name}}</h5>
+                                
+                    <p class="card-text text-center">Price: ${{bra.price | numberFormat}}</p>
+                    {% if bra.discount > 0 %}
+                    <p class="text-danger"><small>{{bra.discount}}% Discount</small></p>
+                    {% endif %}
+                </div>
+            </a>
+        </div>
+    
+      {% endfor %}
+    </div>
+  
+  <!-- ======================= START PAGINATION FOR Brands ============================ -->
+  <div class="row">
+    <div class="col text-center">
+      {% if brand.has_prev %}
+      <a href="{{url_for('get_brand',id=get_brand.id, page=brand.prev_num)}}" class="btn btn-sm btn-outline-success mt-3">Previous</a>
+      {% endif %}
+      {% if brand.total > 8 %}
+      {% for pageNumbers in brand.iter_pages(left_edge=1, right_edge=2, left_current=1, right_current=2) %}
+      {% if pageNumbers %}
+      {% if brand.page == pageNumbers %}
+      <a href="{{url_for('get_brand',id=get_brand.id, page=pageNumbers)}}" class="btn btn-sm btn-success mt-3">{{pageNumbers}}</a>
+      {% else %}
+      <a href="{{url_for('get_brand',id=get_brand.id, page=pageNumbers)}}" class="btn btn-sm btn-outline-success mt-3">{{pageNumbers}}</a>
+      {% endif %}
+      {% else %}
+      ...
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% if brand.has_next %}
+        <a href="{{url_for('get_brand',id=get_brand.id, page=items.next_num)}}" class="btn btn-sm btn-outline-success mt-3">Next</a>
+      {% endif %}
+    </div>
+  </div>
+  <!-- ======================= END PAGINATION FOR brands ============================ -->
+
+  <div class="row">
+    {% elif get_category_item %}
+    {% for category in get_category_item.items %}
+        <div class="col-md-3 mt-3">
+            <a href="{{url_for('view_single_page', id=category.id)}}" class="card h-100 vehicle-card">
+                    <img style="object-fit: cover;" src="{{url_for('static', filename='images/' + category.image_1)}}" class="card-img-top" alt="{{category.name}}" height="200">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{category.name}}</h5>
+
+                    <p class="card-text text-center">Price: ${{category.price | numberFormat}}</p>
+                    {% if category.discount > 0 %}
+                    <p class="text-danger"><small>{{category.discount}}% Discount</small></p>
+                    {% endif %}
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+  </div>
+  <!-- ======================= START PAGINATION FOR Cateories ============================ -->
+  <div class="col text-center">
+    {% if get_category_item.has_prev %}
+    <a href="{{url_for('get_category', id=get_category.id, page=get_category_item.prev_num)}}" class="btn btn-sm btn-outline-success mt-3">Previous</a>
+    {% endif %}
+    {% if get_category_item.total > 8 %}
+    {% for pageNumbers in get_category_item.iter_pages(left_edge=1, right_edge=2, left_current=1, right_current=2) %}
+    {% if pageNumbers %}
+    {% if get_category_item.page == pageNumbers %}
+    <a href="{{url_for('get_category', id=get_category.id, page=pageNumbers)}}" class="btn btn-sm btn-success mt-3">{{pageNumbers}}</a>
+    {% else %}
+    <a href="{{url_for('get_category', id=get_category.id, page=pageNumbers)}}" class="btn btn-sm btn-outline-success mt-3">{{pageNumbers}}</a>
+    {% endif %}
+    {% else %}
+    ...
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    {% if get_category_item.has_next %}
+      <a href="{{url_for('get_category', id=get_category.id, page=get_category_item.next_num)}}" class="btn btn-sm btn-outline-success mt-3">Next</a>
+    {% endif %}
+  </div>
+  <!-- ======================= END PAGINATION FOR Categories ============================ -->
+  <div class="row">
+      {% else %}
+      {% for item in items.items %}
+          <div class="col-md-3 mt-3">
+              <a href="{{url_for('view_single_page', id=item.id)}}" class="card h-100 vehicle-card">
+                      <img style="object-fit: cover;" src="{{url_for('static', filename='images/' + item.image_1)}}" class="card-img-top" alt="{{item.name}}" height="200">
+                  <div class="card-body">
+                      <h5 class="card-title text-center">{{item.name}}</h5>
+
+                      <p class="card-text text-center">Price: ${{item.price | numberFormat}}</p>
+                      {% if item.discount > 0 %}
+                      <p class="text-danger text-center"><small>{{item.discount}}% Discount</small></p>
+                      {% endif %}
+                  </div>
+                </a>
+          </div>
+      {% endfor %}
+  </div>
+      <!-- ======================= START PAGINATION FOR VehiclParts ============================ -->
+      <div class="row">
+        <div class="col text-center">
+          {% if items.has_prev %}
+          <a href="{{url_for('home', page=items.prev_num)}}" class="btn btn-sm btn-outline-success mt-3">Previous</a>
+          {% endif %}
+          {% for pageNumbers in items.iter_pages(left_edge=1, right_edge=2, left_current=1, right_current=2) %}
+          {% if pageNumbers %}
+          {% if items.page == pageNumbers %}
+          <a href="{{url_for('home', page=pageNumbers)}}" class="btn btn-sm btn-success mt-3">{{pageNumbers}}</a>
+          {% else %}
+          <a href="{{url_for('home', page=pageNumbers)}}" class="btn btn-sm btn-outline-success mt-3">{{pageNumbers}}</a>
+          {% endif %}
+          {% else %}
+          ...
+          {% endif %}
+          {% endfor %}
+
+          {% if items.has_next %}
+            <a href="{{url_for('home', page=items.next_num)}}" class="btn btn-sm btn-outline-success mt-3">Next</a>
+          {% endif %}
+        </div>
+      </div> 
+     {% endif %}   
+  </div>
+</div>
+<!-- ======================= END PAGINATION FOR VehicleParts ============================ -->
+
+<div class="container"><hr class="featurette-divider"></div> 
+
+</main>
+{% endblock %}

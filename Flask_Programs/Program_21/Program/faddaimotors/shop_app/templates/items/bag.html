@@ -1,0 +1,328 @@
+{% extends 'base2.html'%}
+{% block body %}
+{% include 'Navbar.html' %}
+<style>
+    * {
+        outline: none;
+    }
+
+    .cart-container {
+        padding: 50px 5%;
+    }
+
+    .cart-heading {
+        display: flex;
+    }
+
+    .cart-items-section {
+        display: flex;
+        column-gap: 5%;
+        margin-top: 50px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .cart-items {
+        flex: 1;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .cart-items .header,
+    .cart-items .item-row {
+        display: flex;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .item-row {
+        display: flex;
+    }
+
+    .item-row .name {
+        color: black;
+        font-size: 15px;
+        margin: 0;
+    }
+
+    .item-row .name:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .cell {
+        padding: 10px 0;
+        font-size: 12px;
+        font-weight: bold;
+        flex: 0.3;
+        text-align: right;
+    }
+
+    .cell.stretch {
+        flex: 1;
+        text-align: left;
+    }
+
+    .discount-box {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .discount-box > *{
+        background-color: #eee;
+    }
+    .discount-box button:hover{
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #000;
+    }
+
+    .checkout-btn{
+        border: none;
+        background-color: #000;
+        color: #fff;
+        font-size: 14px;
+        text-transform: uppercase;
+        padding: 12px 0;
+    }
+
+    .qty-selector {
+        border: 1px solid #555;
+        margin-left: auto;
+        display: flex;
+        width: initial;
+        column-gap: 5px;
+    }
+
+    .qty-selector div {
+        padding: 8px 12px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .code-form{
+        display: flex;
+        padding: 20px;
+        column-gap: 10px;
+        border-radius: 0;
+    }
+
+    .code-form input{
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #777;
+    }
+    .code-form button{
+        border: none;
+        background-color: #000;
+        color: #fff;
+        flex: 0.4;
+        font-size: 13px;
+        text-transform: uppercase;
+    }
+    .edit-button{
+        margin-top: 5px; 
+        border: none; 
+        background-color: #fff; 
+        text-decoration: underline;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+    @media (max-width: 1143px){
+        .cart-items-section{
+            flex-direction: column;
+        }
+
+        .discount-box {
+            max-width: 100%; 
+            display: flex;
+            column-gap: 20px;
+        }
+
+        .discount-box > *{
+            flex: 1;
+        }
+    }
+    @media (max-width:768px){
+        .cart-heading h2{
+            display: none;
+        }
+    }
+
+    @media (max-width: 650px){
+        .discount-box {
+            max-width: 100%; 
+            flex-direction: column;
+        }
+
+        .discount-box > *{
+            flex: 1;
+        }
+    }
+</style>
+<!-- <div class="container mt-4">
+    
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-sm">
+                <thead>
+                    <th>Sr</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Color</th>
+                    <th>Unit Price</th>
+                    <th>Discount</th>
+                    <th>Total</th>
+                    <th>Update Bag</th>
+                    <th>Delete</th>
+                    </thead>
+                    <tbody>
+                        {% for key, item in session['ShoppingBag'].items() %}
+                    {% set discount = "%0.2f" |format((item.discount/100) * item.price|float) %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td><img src="{{url_for('static', filename='images/'+item.image)}}" alt="{{item.name}}" width="50" height="45"></td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.color}}</td>
+                        <td>${{item.price | numberFormat}}</td>
+                        {% if item.discount > 0%}
+                        <td>{{item.discount}}% </td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+                        {% set total = item.quantity|int * item.price|float %}
+                        <td>${{"%0.2f"|format((total|float) - discount|float)|numberFormatFloat}}</td>
+                        <td><a href="#">Edit</a></td>
+                        <td><a href="#">Delete</a></td>
+                    
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td> <a href="/">Continue shopping</a> </td>
+                        <td width="20%"></td>
+                        <td colspan="3">
+                            <h5>Tax: ${{tax|numberFormatFloat}}</h5>
+                        </td>
+                        <td colspan="5">
+                            <h5>Grand Total: ${{grandTotal|numberFormat}}</h5>
+                        </td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        </div>
+                        </div>
+                        </div> -->
+                        <div class="cart-container">
+                            {% include '_messages.html' %}
+                            <div class="cart-heading">
+                                <span style="flex: 1">
+                                    <svg width="5" height="7" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 6L1 3.5 4 1" />
+                                    </svg>
+                                    <a href="/" style="color: #000; font-weight: 500">
+                                        Continue Shopping</a>
+                                </span>
+                                <h2 style="color: black;">SHOPPING BAG</h2>
+                                <div style="flex: 1"></div>
+                            </div>
+                            <tr>
+                                <div class="cart-items-section">
+                                    <div class="cart-items">
+                                        <div class="header">
+                                            <div class="cell stretch"><span>ITEM</span></div>
+                                            <div class="cell"><span>QUANTITY</span></div>
+                                            <div class="cell"><span>PRICE</span></div>
+                                        </div>
+                                        {% for key, item in session['ShoppingBag'].items() %}
+                                        {% set discount = "%0.2f" |format((item.discount/100) * item.price|float) %}
+                                        <div class="content">
+                                            <div class="item-row">
+                                                <div class="cell stretch" style="display: flex; column-gap: 20px; font-weight: 400;">
+                                                    <img width="120" style="object-fit: cover; border:1px solid rgb(235, 230, 230);" height="150"
+                                                        src="{{url_for('static', filename='images/'+item.image)}}" alt="{{item.name}}" />
+                                                    <div>
+                                                        <p class="name">{{item.name}}</p>
+                                                        <span style="font-size: 12.5px;">Size: XL</span>
+<form action="{{url_for('updatebag', code=key)}}" method="post">
+
+    {% set colors = item.colors.split(',') %}
+    <label for="colors">Colors:</label>
+    <select name="color" id="color">
+        <option value="{{item.color}}" style="display: none;">{{item.color | capitalize}}</option>
+        {% for color in colors %}
+        {% set col = color.split(':') %}
+        <option value="{{col[0]}}">{{col[0] | capitalize}}</option>
+        {% endfor %}
+    </select>
+    <br>
+
+    <button type="submit" class="edit-button"><i class="fas fa-pencil-alt"
+            style="font-size: 10px;color:#777;padding-right: 3px;"></i>Edit</button>
+        </div>
+        </div>
+        <div class="cell">
+            <div style="display: flex;">
+                <div class="qty-selector">
+                <div><i class="fas fa-minus" style="font-size: smaller;color: #000;"></i></div>
+                <div style="padding: 8px 0;">
+                    <input style="max-width: 20px; text-align: center; border: none; color: #000;" type="number" min="1" value="{{1}}">
+                    </div>
+                <div><i class="fas fa-plus" style="font-size: smaller; color: #000;"></i></div>
+                </div>
+                </div>
+                </div>
+                <div class="cell">
+                    {% set total = item.quantity|int * item.price|float %}
+                    {% if item.discount > 0 %}
+                    <p style="text-decoration: line-through; margin: 0;">${{item.price | numberFormat}}</p>
+                    {%else%}
+                    <p></p>
+                    {%endif%}
+                    {% if item.discount > 0 %}
+                    <p style="font-size: 16px; font-weight: 500; color: #a00">${{"%0.2f"|format((total|float) -
+                        discount|float)|numberFormatFloat}}</p>
+                    {%else%}
+                    <p style="font-size: 16px; font-weight: 500; color: #a00">${{item.price | numberFormat}}</p>
+                    {% endif %}
+                </div>
+</form>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="discount-box">
+                                        <div style="margin-bottom: 2px;">
+                                            <form class="code-form">
+                                                <input placeholder="Discount code" style="font-size: 12px;" type="text">
+                                                <button>Apply</button>
+                                            </form>
+                                        </div>
+                                        <div class="bottom-part">
+                                            <div style="color: rgb(124, 42, 42); display: flex; align-items: center; justify-content: space-between; padding-inline: 20px; padding-top: 10px;"
+                                                class="subtotal">
+                                                <span>Tax</span>
+                                                <h6>${{tax|numberFormatFloat}}</h6>
+                                            </div>
+                                            <div style="color: #000; display: flex; align-items: center; justify-content: space-between; padding-inline: 20px;"
+                                                class="subtotal">
+                                                <span><b>Subtotal</b> ({{session['ShoppingBag'] | length}} items)</span>
+                                                <h5>${{grandTotal|numberFormat}}</h5>
+                                            </div>
+                                            <div style="padding: 20px;"><button class="checkout-btn" style=" width: 100%;">Checkout</button></div>
+                                        </div>
+                                    </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,197 @@
+{% extends 'base2.html' %}
+
+
+{% block body %}
+
+<style>
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  color: #5a5a5a;
+}
+.navbarMain {
+      border-bottom: solid 5px #b08b57;
+      text-transform: uppercase;
+      font-size: 15px
+    }
+
+.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  /* rtl:remove */
+  letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+  .featurette-heading {
+    font-size: 30px;
+}
+.other-image{
+  margin-right: 20px;
+  transition: all .15s ease-out;
+}
+.other-image:hover{
+  cursor: pointer;
+  box-shadow: 0 0 20px 5px #ddd;
+  transform: scale(1.1);
+}
+
+@media (min-width: 59em) {
+  .featurette-heading {
+    margin-top: 2rem;
+  }
+}
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	.navbar .nav-item:hover .nav-link{   }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}	
+</style>
+
+  <!-- Navbar starts -->
+
+<nav class="navbar navbar-dark bg-dark navbar navbar-expand-lg navbarMain">
+  <div class="container-fluid" style="padding-top: 1rem;" >     
+    <a class="navbar-brand text-info" href="#">
+      faddai<span class="text-white">Motors</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp;Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/"><i class="fas fa-car"></i>&nbsp;Vehicles and Parts</a>
+        </li>
+<!-- Exclude BRands and Category 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-crutch"></i>&nbsp;Brands
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% for brand in brands %}
+            <li><a class="dropdown-item" href="{{url_for('get_brand', id=brand.id)}}">{{brand.name}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-holly-berry"></i>&nbsp;Categories
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% for category in categorys %}
+            <li><a class="dropdown-item" href="{{url_for('get_category', id=category.id)}}">{{category.name}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+-->
+
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1"><i class="fas fa-shopping-bag"></i>&nbsp; Bag ({{session['ShoppingBag'] | length}})</a>
+          </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <!-- Navbar ends -->
+ <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top navbarMain">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <img src="{{url_for('static', filename='images/' + item.image_1)}}" class="bd-placeholder-img rounded-circle me-3" height="70" width="70" alt="{{item.name}}">
+      </div>
+    </div>
+        
+    <h3 class="navbar-nav" style="color: #fff;">{{item.name}}</h3>
+    <div class="navbar-nav ms-auto" style="color: #fff;">
+      <h3 class="nav-item">${{item.price | numberFormat}}</h3>
+    </div>
+ 
+  </div> <!-- navbar-collapse.// -->
+ </nav>
+
+<div class="container mt-5">
+    <div class="row featurette">
+        <div class="col-md-5 order-md-1" id="first_image">
+            <img src="{{url_for('static', filename='images/' + item.image_1)}}" alt="{{item.name}}" width="500">
+
+        </div>
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Product Name: {{item.name}}</h2>
+            <hr>
+            <p class="lead">Product Price: ${{item.price | numberFormat}}</p>
+            {% if item.discount > 0 %}
+                <p class="lead">Discount: {{item.discount}}%</p>
+            {% endif %}
+            <b>VEHICLE DESCRIPTION</b>
+            <p class="lead">{{item.description}}</p>
+            <hr>
+
+
+            <form action="{{url_for('AddtoBag')}}" method="post">
+                <input type="hidden" name="item_id" value="{{item.id}}">
+                <button type="submit" class="btn btn-sm btn-info">Add to Bag</button>
+                <label for="">Quantity:</label>
+                <input type="number" name="quantity" id="" value="1" min="1" max="{{item.stock}}">
+                {% set colors = item.colors.split(',') %}
+                    <label for="colors">Colors:</label>
+                    <select name="colors" id="colors">
+                        {% for color in colors %}
+                            {% set col = color.split(':') %}
+                                <option value="{{col[0]}}">{{col[0] | capitalize}}</option>
+                        {% endfor %}
+                    </select>
+            </form>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mt-3" id="other_images">
+            <hr>
+            <img src="{{url_for('static', filename='images/' + item.image_1)}}" alt="{{item.name}}" width="100" height="100"
+              class="other-image">
+            <img src="{{url_for('static', filename='images/' + item.image_2)}}" alt="{{item.name}}" width="100" height="100"
+              class="other-image">
+            <img src="{{url_for('static', filename='images/' + item.image_3)}}" alt="{{item.name}}" width="100" height="100"
+              class="other-image">
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script>
+    var first_image = document.getElementById('first_image');
+    var other_images = document.getElementById('other_images').getElementsByTagName('img');
+    for (var i = 0; i < other_images.length; i++){
+
+        other_images[i].addEventListener('click', full_image);
+    }
+
+    function full_image(){
+        var ImageSRC = this.getAttribute('src');
+        first_image.innerHTML = "<img src =" + ImageSRC + " width='500'>";
+    }
+</script>
+
+{% endblock %}

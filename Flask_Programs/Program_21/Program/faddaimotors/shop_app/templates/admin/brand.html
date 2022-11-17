@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% include '_messages.html' %}
+
+     <!-- Navbar content -->
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/admin">Admin</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="/admin">Home</a>              
+            <a class="nav-link" href="/addNewbrand">Add Brand</a>
+            <a class="nav-link" href="/brands">Brands</a>              
+            <a class="nav-link" href="/addcategory">Add Category</a>
+            <a class="nav-link" href="/category">categories</a>
+            <a class="nav-link" href="/vehiclePart">Add item</a>            
+          </div>
+        </div>
+      </div>
+    </nav>
+</div>
+
+<div class="container mt-5">
+    <table class="table table-sm table-condensed table-striped table-hover">
+        <thead>
+            <th>Sr</th>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+            {% if brands %}
+            {% for brand in brands %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{brand.name}}</td>
+                <td> <a href="{{url_for('updatebrand', id = brand.id)}}" class="btn btn-sm btn-outline-info" >Update</a></td>
+                <td>
+                   <!-- <a href="" class="btn btn-sm btn-outline-danger" >Delete</a> -->
+                   <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{brand.id}}">
+                    Remove
+                  </button>
+                  </td>
+            </tr>
+                  <div class="modal fade" id="staticBackdrop-{{brand.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="staticBackdropLabel">{{brand.name}}</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <span class="text-danger">Are you sure you want to Delete this brand?</span>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-warning btn-sm" data-bs-dismiss="modal">NO!</button>
+                          <form action="{{url_for('deletebrand', id=brand.id)}}" method="POST">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Yes!</button>
+                          </form>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            {% endfor %}
+            {% else %}
+            {% for category in categories %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{category.name}}</td>
+                <td> <a href="{{url_for('updatecategory', id = category.id)}}" class="btn btn-sm btn-outline-info" >Update</a></td>
+                <td>
+                   <!--<a href="" class="btn btn-sm btn-outline-danger" >Delete</a>-->
+                   <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{category.id}}">
+                    Remove
+                  </button>
+                </td>
+            </tr>
+             <div class="modal fade" id="staticBackdrop-{{category.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="staticBackdropLabel">{{category.name}}</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <span class="text-danger">Are you sure you want to Delete this Category?</span>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-warning btn-sm" data-bs-dismiss="modal">NO!</button>
+                          <form action="{{url_for('deletecategory', id=category.id)}}" method="POST">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Yes!</button>
+                          </form>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

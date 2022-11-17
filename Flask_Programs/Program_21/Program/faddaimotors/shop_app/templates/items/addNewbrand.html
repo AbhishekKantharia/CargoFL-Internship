@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <!-- Navbar content -->
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/admin">Admin</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link active" aria-current="page" href="/admin">Home</a>              
+                  <a class="nav-link" href="/addNewbrand">Add Brand</a>
+                  <a class="nav-link" href="/brands">Brands</a>              
+                  <a class="nav-link" href="/addcategory">Add Category</a>
+                  <a class="nav-link" href="/category">categories</a>
+                  <a class="nav-link" href="/vehiclePart">Add item</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            {% include "_messages.html" %}
+            {% if brands %}
+            <h1 class="text-center mt-5">Add a brand</h1>
+            <form action="" method="POST">
+                <input type="text" name="brand" class="form-control">
+                <input type="submit" value="Add New brand" class="btn btn-info mt-2">
+            </form>
+            {% else %}
+            <h1 class="text-center mt-5">Add new Category</h1>
+            <form action="" method="POST">
+                <input type="text" name="category" class="form-control">
+                <input type="submit" value="Add  category" class="btn btn-info mt-2">
+            </form>
+            {% endif %}
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+{% endblock %}

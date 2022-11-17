@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>faddaiMotors - Contact Us</title> 
+{% endblock %}
+
+{% block body %}
+
+    <header>
+        <div class="Navigation">
+            <h1 class="logo-text"><span>faddai</span>Motors</h1>
+            <nav>
+                <ul class="nav_links">
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="{{url_for('inventory')}}">INVENTORY</a></li>
+                    <li><a href="{{url_for('Autoparts')}}">AUTO PARTS</a></li>
+                </ul>
+            </nav>
+            <a class="cta" href="{{url_for('contact')}}"><button>contact</button></a>
+            </div>
+    </header>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<div class="container">
+    {% include '_messages.html' %}
+    {% from "_formhelpers.html" import render_field %}
+    <div class="text-center" style="color: #f00;" ><h1>Register</h1></div>
+        <form method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div>
+                        {{ render_field(form.username, class="form-control") }}
+                        {{ render_field(form.email, class="form-control") }}
+                        {{ render_field(form.password, class="form-control") }}
+                        {{ render_field(form.confirm, class="form-control") }}
+                        <input type="file" name="photo">
+                    </div>
+            <p><input type=submit value= "Register" class="btn btn-info mt-2"></p>
+        </div>
+    </div>
+        </form>
+</div>
+
+
+{% endblock %}

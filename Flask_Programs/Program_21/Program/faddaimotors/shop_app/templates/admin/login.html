@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+
+<div class="container">
+        {% from "_formhelpers.html" import render_field %}
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                
+
+        <div class="text-center" style="color: #f00;" text-white bg-primary p-2><h1>Login</h1></div>
+        <br>
+        {% include '_messages.html' %}
+        <form method="post" enctype="multipart/form-data">
+            <div>
+                {{ render_field(form.email, class="form-control") }}
+                {{ render_field(form.password, class="form-control") }}
+                
+            </div>
+
+            <p><input type=submit value= "Login" class="btn btn-info mt-2"></p>
+        </form>
+    </div>
+        <div class="col-md-4"></div>
+</div>
+</div>
+{% endblock %}
