@@ -245,6 +245,6 @@ Max length is determined for the attention weights. The captions are tokenized i
 One major issue I ran into was trying to find a way to access the files online in a programmatic way. First, I tried uploading the image dataset to GitHub, but I had trouble download the files from there. Next, I uploaded the images to Google Photos, but then soon realized there was no way to access them as all the filenames had been changed during the upload. Finally, I decided to upload the dataset to Google Drive and used the [GoogleDriveDownloader](https://www.pydoc.io/pypi/googledrivedownloader-0.3/autoapi/google_drive_downloader/index.html) API to easily access the images.
 
 ### Author
-**Jacob Wilkins**
-* **[GitHub](https://github.com/JacobAWilkins/)**
-* **[LinkedIn](https://www.linkedin.com/in/jacob-a-wilkins-cs/)**
+**Abhishek Kantharia**
+* **[GitHub](https://github.com/AbhishekKantharia/)**
+* **[LinkedIn](https://www.linkedin.com/in/abhishekkantharia/)**
