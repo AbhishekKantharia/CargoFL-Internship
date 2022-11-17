@@ -199,9 +199,6 @@ My challenge was to transform the references that were designed for test train s
 * [Challenge](#challenge-2)
 * [Author](#author)
 
-### Deployment Instructions
-##### Online
-http://jacobwilkins.pythonanywhere.com/caption
 ##### Localhost
 1. Install Flask:
 ```pip install flask```
