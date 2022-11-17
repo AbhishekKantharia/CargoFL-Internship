@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+		
+    <title>Movifier</title>
+  </head>
+  <body>
+		<header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">Movifier</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
+							<a class="nav-item nav-link" href="{{ url_for('classify') }}">Classify</a>
+							<a class="nav-item nav-link" href="{{ url_for('caption') }}">Caption</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+				<p> <i>Do you like movies?</i> Type a description of your dream movie to get started! </p>
+					{% with messages = get_flashed_messages(with_categories=true) %}
+						{% if messages %}
+							{% for category, message in messages %}
+								<div class="alert alert-{{ category }}">
+									{{ message }}
+								</div>
+							{% endfor %}
+						{% endif %}
+					{% endwith %}
+				</div>
+				<div class="col-md-8">
+					<form class="content-section" method="POST" action="">
+						{{ form.hidden_tag() }}
+						<fieldset class="form-group">
+							<legend class="border-bottom mb-4 font-weight-bold">Search Movie Descriptions</legend>
+							<div class="form-group">
+								{{ form.movieDescription.label(class="form-control-label") }}
+								{% if form.movieDescription.errors %}
+									{{ form.movieDescription(class="form-control form-control-lg is-invalid", placeholder="Ex: The Joker wreaks havoc on the people of Gotham", row='50', cols='60') }}
+									<div class="invalid-feedback">
+										{% for error in form.movieDescription.errors %}
+											<span>{{ error }}</span>
+										{% endfor %}
+									</div>
+								{% else %}
+									{{ form.movieDescription(class="form-control form-control-lg", placeholder="Ex: The Joker wreaks havoc on the people of Gotham", row='50', cols='60') }}
+								{% endif %} 
+							</div>
+							<div class="form-group">
+								{{ form.numResults.label(class="form-control-label") }}
+								{% if form.numResults.errors %}
+									{{ form.numResults(class="form-control form-control-lg is-invalid", placeholder="Ex: 20") }}
+									<div class="invalid-feedback">
+										{% for error in form.numResults.errors %}
+											<span>{{ error }}</span>
+										{% endfor %}
+									</div>
+								{% else %}
+									{{ form.numResults(class="form-control form-control-lg", placeholder="Ex: 20") }}
+								{% endif %}
+							</div>
+						</fieldset>
+						<div class="form-group">
+							{{ form.submit(class="btn btn-outline-info") }}
+						</div>
+					</form>
+				</div>
+				<div class="col-md-4">
+					<div class="content-section">
+						<h3>Scoring Algorithm</h3>
+						<p class='text-muted'>Search results are scored based upon the Okapi BM25 algorithm.</p>
+						<h3>Optimizations</h3>
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-light">Ngram</li>
+							<li class="list-group-item list-group-item-light">Stemming</li>
+							<li class="list-group-item list-group-item-light">Stop Words Filter</li>
+							<li class="list-group-item list-group-item-light">Punctuation Filter</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+    	{% for movie in movies %}
+			<div class="row">
+				<div class="col-md-12">
+					<article class="media content-section">
+						<div class="col-md-2">
+							<a href="https://www.imdb.com/title/tt{{ movie[0].link }}" target="_blank">
+								<img class="img-fluid" src="https://image.tmdb.org/t/p/w500{{ movie[2].poster }}"/>
+							</a>
+						</div>
+						<div class="col-md-10">
+							<div class="media-body">
+								<h2><a class="article-title" href="https://www.imdb.com/title/tt{{ movie[0].link }}" target="_blank">{{ movie[1].id }} </a></h2>
+								<p class="article-content">{{ movie[1].text|safe }}</p>
+								<div class="article-metadata bottom-align-text">
+									<small class="text-muted">Score: {{ '%0.5f'|format(movie[1].score) }}</small>
+								</div>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+    	{% endfor %}
+		</div>
+		
+		<footer class="page-footer font-small bg-steel text-white">
+			<div class="footer-copyright text-center py-3">© 2019 Jacob Wilkins. All Rights Reserved.
+			</div>
+		</footer>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

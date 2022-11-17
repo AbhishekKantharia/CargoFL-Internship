@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Park-Safe</title>
+    </head>
+    <body>
+        <form action="{{ url_for('find_parking') }}" method="POST">
+            <label>Latitude: </label>
+            <input type="number" step="any" value="37.76" name="latitude" />
+            <label>Longitude: </label>
+            <input type="number" step="any" value="-122.44" name="longitude" />
+            <label>Date and time: </label>
+            <input type="datetime-local" name="datetime">
+            <label>Distane (m): </label>
+            <input type="number" value="500" name="range" min="0" max="1000"/>
+            <input type="submit" value="Find Parking Spots!">
+        </form>
+        {% include "map.html" %}
+    </body>
+</html>
