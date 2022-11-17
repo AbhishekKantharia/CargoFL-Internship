@@ -151,9 +151,6 @@ My challenge with the text search was to modify the BM25 algorithm from the refe
 * [Challenge](#challenge-1)
 * [Author](#author)
 
-### Deployment Instructions
-##### Online
-http://jacobwilkins.pythonanywhere.com/classifer
 ##### Localhost
 1. Install Flask:
 ```pip install flask```
