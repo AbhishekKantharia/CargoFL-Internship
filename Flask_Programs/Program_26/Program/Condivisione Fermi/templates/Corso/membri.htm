@@ -1,0 +1,23 @@
+{% extends "stampo.htm" %}
+{% block title %}Utenti corso - Condivisione{% endblock %}
+{% block content %}
+    <h1>Studenti del corso</h1>
+    {% for oggetto in entita %}
+        <div class="card" style="width: 100%;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ oggetto[10] }} {{ oggetto[11] }}<br><a
+                        href="/user_inspect/{{ oggetto[8] }}">Ispeziona</a> <a
+                        href="/presenza/{{ oggetto[8] }}/{{ oggetto[0] }}">{% if oggetto[9] == 1 %}Segna come
+                    assente{% else %}Segna come presente{% endif %}</a> <a href="/impegno_del/{{ oggetto[8] }}/{{ oggetto[0] }}">Elimina dal corso</a></li>
+                </li>
+            </ul>
+        </div>
+        <br>
+    {% endfor %}
+    <div class="alert alert-warning">
+        Iniziando la lezione, il corso verrà eliminato dalla piattaforma e verranno inviate mail ai genitori degli
+        studenti assenti.<br>E'consigliabile aspettare almeno dieci minuti dopo l'inizio della lezione prima di eseguire
+        tale procedura.
+    </div>
+    <a href="/inizialezione/{{ idcorso }}" type="button" class="btn btn-success btn-lg btn-block">Inizia lezione</a>
+{% endblock %}

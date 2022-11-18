@@ -1,0 +1,20 @@
+.card-header-d{
+  border: none !important;
+  border-radius: 0 !important;
+  background-color: #e9ecef!important
+}
+
+.card-d{
+  border: none !important;
+}
+
+.card-body-d-m{
+  border-left:  2px solid #e9ecef!important;
+  border-right: 2px solid #e9ecef!important;
+}
+
+.card-body-d-d{
+  border-left: 2px solid #e9ecef !important;
+  border-right: 2px solid #e9ecef !important;
+  border-bottom: 2px solid #e9ecef !important;
+}

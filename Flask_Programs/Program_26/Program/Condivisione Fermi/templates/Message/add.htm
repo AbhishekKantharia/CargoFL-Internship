@@ -1,0 +1,19 @@
+{% extends "stampo.htm" %}
+{% block title %}Nuovo messaggio - Condivisione{% endblock %}
+{% block content %}
+<form action="/message_add" method="POST">
+  <div class="form-group">
+    <label for="Testo">Testo del messaggio</label>
+    <textarea class="form-control" id="Testo" rows="3" name="testo"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="Scelta">Tipologia del messaggio</label>
+    <select class="form-control" id="Scelta" name="scelta">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+    </select>
+  </div>
+<button type="submit" class="btn btn-primary">Invia</button>
+</form>
+{% endblock %}

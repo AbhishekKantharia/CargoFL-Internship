@@ -1,0 +1,27 @@
+{% extends "stampo.htm" %}
+{% block title %}Lista materie - Condivisione{% endblock %}
+{% block content %}
+    <h1>Lista materie di Condivisione</h1>
+    <div class="alert alert-info" role="alert">
+        <strong>Legenda icone</strong> <br>
+        <strong><i class="fa fa-pencil" aria-hidden="true"></i></strong> - Modifica informazioni materia <br>
+        <strong><i class="fa fa-ban" aria-hidden="true"></i></strong> - Elimina una materia dalla piattaforma. <strong>Attenzione: questa operazione rimuoverà anche i corsi associati a quella materia!</strong> <br>
+    </div>
+    <a href="/materia_add" type="button" class="btn btn-secondary btn-lg btn-block">Aggiungi una materia</a>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Professore</th>
+            <th>Azioni</th>
+        </tr>
+        </thead>
+        {% for materia in materie %}
+            <tr>
+                <td>{{ materia.nome }}</td>
+                <td>{{ materia.professore }}</td>
+                <td><a href="/materia_edit/{{ materia.mid }}"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a href="/materia_del/{{ materia.mid }}"><i class="fa fa-ban" aria-hidden="true"></i></a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "stampo.htm" %}
+{% block title %}Accesso negato - Condivisione{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-3">Ciao, Smilzo!</h1>
+        <p class="lead">Non puoi entrare qui! <br><i>Arnaldo Losi - Creatore del registro utilizzato al Fermi fino al 2017</i></p>
+        <hr class="my-4">
+        <p>Segue una descrizione dell'errore</p>
+        <div class="alert alert-danger" role="alert">
+            <strong>403</strong>: Accesso negato. Verificare le proprie credenziali o rivolgersi alla segreteria.
+        </div>
+        <div class="alert alert-danger" role="alert">
+            <strong>ATTENZIONE!</strong> Nel caso in cui l'utenza sia stata creata l'anno precedente, è necessario procedere nuovamente alla registrazione.
+        </div>
+        Torna alla <a href="/dashboard">schermata principale</a> o <a href="/register"> registrati</a>.
+    </div>
+{% endblock %}

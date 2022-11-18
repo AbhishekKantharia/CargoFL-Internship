@@ -1,0 +1,39 @@
+{% extends "stampo.htm" %}
+{% block title %}Promozione utente - Condivisione{% endblock %}
+{% block extrahead %}
+    <script>
+        var materia = 0;
+        function genhtml(n) {
+            return "<select id=\"materia" + n + "\" class=\"form-control\" name=\"materia" + n + "\">{% for materia in materie %}<option value=\"{{materia.mid}}\">{{materia.nome}} - {{materia.professore}}</option>{% endfor %}</select>"
+        }
+        function adduser() {
+            $("#materia").append(genhtml(materia));
+            materia += 1;
+            $("#remove-user").removeClass("disabled");
+        }
+        function removeuser() {
+            if (materia > 0) {
+                $("#materia" + (materia - 1)).remove();
+                materia -= 1;
+                if (materia === 0) {
+                    $("#remove-user").addClass("disabled");
+                }
+            }
+        }
+    </script>
+{% endblock %}
+{% block content %}
+    <h1>Promozione di {{ entita.nome }} {{ entita.cognome }} a Peer Educator</h1>
+    <form action="/user_ascend/{{ entita.uid }}" method="POST">
+      <div class="form-group">
+        <label for="materia">Selezionare le materie per le quali il Peer sarà abilitato</label>
+            <div class="col-xs-10" id="materia">
+                <p>
+                    <div id="add-user" class="btn btn-success" onclick="adduser()"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                    <div id="remove-user" class="btn btn-danger disabled" onclick="removeuser()"><i class="fa fa-minus" aria-hidden="true"></i></div>
+                </p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Conferma</button>
+    </form>
+{% endblock %}

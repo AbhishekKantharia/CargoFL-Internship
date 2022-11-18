@@ -1,0 +1,26 @@
+{% extends "stampo.htm" %}
+{% block title %}Richiedi lezione - Condivisione{% endblock %}
+{% block content %}
+    <h1>Richiesta di una ripetizione</h1>
+    <div class="alert alert-warning">
+        Il campo data non è ancora <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1366188">correttamente
+        supportato da Firefox</a>, Internet Explorer 11 e probabilmente altri browser. Se il calendario non viene fuori,
+        inserite le date nel formato AAAA-MM-GG.
+    </div>
+    <form class="form-horizontal" action="/corso_join/{{ cid }}" method="POST">
+        <div class="form-group">
+            <label class="col-xs-2" for="form-tipo">Data Ripetizione</label>
+            <div class="col-xs-10">
+                <input class="form-control" type="date" placeholder="aaaa-mm-dd" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+                       name="data">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2" for="form-tipo">Ora</label>
+            <div class="col-xs-10">
+                <input class="form-control" type="text" placeholder="13:00" name="ora" pattern="[0-9]{2}:[0-9]{2}">
+            </div>
+        </div>
+    <button type="submit" class="btn btn-primary">Invia</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,310 @@
+{% extends "stampo.htm" %}
+{% block title %}Dashboard - Condivisione{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-3">{% if utente.tipo == 0 %}Ciao, {{ utente.nome }}!{% elif utente.tipo == 1 %} Ciao, peer
+            {{ utente.nome }}! {% elif utente.tipo == 2 %}Salve, prof {{ utente.cognome }} {% elif utente.tipo == 3 %}
+            Salve, Admin {{ utente.cognome }}.{% endif %}</h1>
+        <p class="lead"> {% if utente.tipo > 1 %} Le {% else %}Ti{% endif %} diamo il benvenuto nella
+            {% if utente.tipo >= 2 %} sua {% else %}tua{% endif %} dashboard!</p>
+        <hr class="my-4">
+        <p>{% if utente.tipo == 0 %}In questa pagina potrai esplorare i corsi sulla piattaforma, visualizzare i tuoi
+            impegni e modificare il tuo profilo.{% elif utente.tipo == 1 %}In questa pagina potrai esplorare e creare
+            corsi, visualizzare i tuoi impegni e modificare il tuo profilo.{% elif utente.tipo == 2 %}Da questa pagina
+            le sarà possibile creare corsi e materie. {% elif utente.tipo == 3 %}
+            Da questa pagina le sarà possibile creare materie, gestire gli utenti e visualizzare i log di
+            sistema.{% endif %}</p>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+            <div id="accordion" role="tablist" class="fg-primary">
+                <div class="card card-d">
+                    <div class="card-header card-header-d" role="tab" id="headingOne">
+                        <h5 class="mb-0">
+                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true"
+                               aria-controls="collapseOne">
+                                Messaggi di sistema
+                            </a>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
+                         data-parent="#accordion">
+                        <div class="card-body card-body-d-m">
+                            {% for messaggio in messaggi %}
+                                <div class="alert alert-{% if messaggio.tipo == 1 %}success{% elif messaggio.tipo == 2 %}primary{% elif messaggio.tipo == 3 %}danger{% endif %}"
+                                     role="alert">
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            {{ messaggio.testo }}<br>{{ messaggio.data }}
+                                        </div>
+                                        <div class="col-md-1">
+                                            {% if utente.tipo == 3 %}
+                                                <a href="/message_del/{{ messaggio.mid }}" class="alert-link"><i
+                                                        class="fa fa-times" aria-hidden="true"></i></a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-d">
+                    <div class="card-header card-header-d" role="tab" id="headingTwo">
+                        <h5 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
+                               aria-controls="collapseTwo">
+                                Impegni
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
+                         data-parent="#accordion">
+                        <div class="card-body card-body-d-m" style="overflow-x: auto;">
+                            <table class="table table-sm">
+                                <thead>
+                                <tr>
+                                    <th>Materia</th>
+                                    <th>Giorno</th>
+                                    <th>Azioni</th>
+                                </tr>
+                                </thead>
+                                {% if impegni %}
+                                    {% for impegno in impegni %}
+                                        <tr>
+                                            <td>{{ impegno[5] }}</td>
+                                            {% if impegno[8] %}
+                                                <td>{{ impegno[8] }}</td>
+                                            {% else %}
+                                                <td>{% if impegno[6] == 1 %}Lunedì, {% elif impegno[6] == 2 %}
+                                                    Martedì, {% elif impegno[6] == 3 %}
+                                                    Mercoledì, {% elif impegno[6] == 4 %}
+                                                    Giovedì, {% elif impegno[6] == 5 %}
+                                                    Venerdì, {% endif %}, {{ impegno[7] }}</td>
+                                            {% endif %}
+                                            <td><a href="/user_inspect/{{ impegno[11] }}"><i
+                                                    class="fa fa-graduation-cap"
+                                                    aria-hidden="true"></i></a>
+                                                <a href="/user_inspect/{{ impegno[2] }}"><i class="fa fa-users"
+                                                                                            aria-hidden="true"></i></a>
+                                                {% if utente.tipo >= 1 %}
+                                                    <a href="/corso_membri/{{ impegno[1] }}"><i class="fa fa-search"
+                                                                                                aria-hidden="true"></i></a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                                {% if lezioni %}
+                                    {% for lezione in lezioni %}
+                                        <tr>
+                                            <td>{{ lezione[5] }}</td>
+                                            {% if lezione[8] %}
+                                                <td>{{ lezione[8] }}</td>
+                                            {% else %}
+                                                <td>{% if lezione[6] == 1 %}Lunedì, {% elif lezione[6] == 2 %}
+                                                    Martedì, {% elif lezione[6] == 3 %}
+                                                    Mercoledì, {% elif lezione[6] == 4 %}
+                                                    Giovedì, {% elif lezione[6] == 5 %}
+                                                    Venerdì, {% endif %} {{ lezione[7] }}</td>
+                                            {% endif %}
+                                            <td><a href="/user_inspect/{{ lezione[11] }}"><i
+                                                    class="fa fa-graduation-cap"
+                                                    aria-hidden="true"></i></a>
+                                                <a href="/user_inspect/{{ lezione[2] }}"><i class="fa fa-users"
+                                                                                            aria-hidden="true"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                            </table>
+                            <div class="alert alert-info" role="alert">
+                                <strong><i class="fa fa-graduation-cap" aria-hidden="true"></i></strong> - Visualizza
+                                informazioni sul peer/prof <br>
+                                <strong><i class="fa fa-users" aria-hidden="true"></i></strong> - Visualizza
+                                informazioni sullo studente <br>
+                                {% if utente.tipo >= 1 %}
+                                    <strong><i class="fa fa-search" aria-hidden="true"></i></strong> - Esegui l'appello
+                                {% endif %}
+                                <br><strong>Nel caso in cui non si riesca a presenziare alla lezione, </strong>
+                                contattare il peer educator.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-d">
+                    <div class="card-header card-header-d" role="tab" id="headingThree">
+                        <h5 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false"
+                               aria-controls="collapseThree">
+                                Corsi
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree"
+                         data-parent="#accordion">
+                        <div class="card-body card-body-d-d">
+                            <div class="alert alert-info" role="alert">
+                                <strong><i class="fa fa-graduation-cap" aria-hidden="true"></i></strong> - Visualizza
+                                informazioni sul peer <br>
+                                <strong><i class="fa fa-sign-in" aria-hidden="true"></i></strong> - Iscriviti al corso
+                                <br>
+                                {% if utente.tipo >= 1 %}
+                                    <strong><i class="fa fa-ban" aria-hidden="true"></i></strong> - Elimina il tuo corso
+                                {% endif %}
+                                <br> Se il peer non specifica nulla negli argomenti, la lezione inizia all'ora indicata
+                                tra parentesi.
+                            </div>
+                            <div class="alert alert-info" role="alert">
+                                <strong>Si raccomanda agli studenti di iscriversi entro Domenica</strong>, dato che le
+                                prenotazioni all'ultimo minuto non sono garantite!
+                            </div>
+                            <div style="overflow-x: auto;">
+                                <table class="table table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th>Materia</th>
+                                        <th>Argomenti</th>
+                                        <th>Stato</th>
+                                        <th>Azioni</th>
+                                    </tr>
+                                    </thead>
+                                    {% for corso in corsi %}
+                                        {% if corso.tipo == 0 %}
+                                            <tr>
+                                                <td>{{ corso.materia.nome }} - {{ corso.materia.professore }} -
+                                                    ({{ corso.materia.ora }})
+                                                </td>
+                                                <td>{{ corso.argomenti }}</td>
+                                                <td>
+                                                    <div class="progress">
+                                                        <div {% if (corso.occupati/corso.limite)*100 < 50 %}class="progress-bar bg-success"
+                                                             {% elif (corso.occupati/corso.limite)*100 < 75 %}class="progress-bar bg-warning"
+                                                             {% else %}class="progress-bar bg-danger" {% endif %}
+                                                             role="progressbar"
+                                                             style="width: {{ (corso.occupati/corso.limite)*100//1 }}%"
+                                                             aria-valuenow="{{ (corso.occupati//1).__round__() }}"
+                                                             aria-valuemin="0"
+                                                             aria-valuemax="/{{ corso.limite }}">{{ ((corso.occupati/corso.limite)*100//1).__round__() }}%
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>{% if corso.pid == utente.uid %}
+                                                    <a href="/corso_del/{{ corso.cid }}"><i class="fa fa-ban"
+                                                                                            aria-hidden="true"></i></a>  {% elif utente.tipo==3 %}
+                                                    <a href="/corso_del/{{ corso.cid }}"><i class="fa fa-ban"
+                                                                                            aria-hidden="true"></i></a> {% else %}
+                                                    <a href="/corso_join/{{ corso.cid }}"><i class="fa fa-sign-in"
+                                                                                             aria-hidden="true"></i></a> {% endif %}
+                                                    <a href="/user_inspect/{{ corso.pid }}"><i
+                                                            class="fa fa-graduation-cap"
+                                                            aria-hidden="true"></i></a>
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-d">
+                    <div class="card-header card-header-d" role="tab" id="headingFour">
+                        <h5 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" href="#collapseFour"
+                               aria-expanded="false"
+                               aria-controls="collapseThree">
+                                Ripetizioni
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour"
+                         data-parent="#accordion">
+                        <div class="card-body card-body-d-d">
+                            <div class="alert alert-info" role="alert">
+                                <strong><i class="fa fa-graduation-cap" aria-hidden="true"></i></strong> - Visualizza
+                                informazioni sul prof <br>
+                                <strong><i class="fa fa-sign-in" aria-hidden="true"></i></strong> - Iscriviti al corso
+                                <br>
+                                {% if utente.tipo >= 1 %}
+                                    <strong><i class="fa fa-ban" aria-hidden="true"></i></strong> - Elimina il tuo corso
+                                {% endif %}
+                            </div>
+                            <div style="overflow-x: auto;">
+                                <table class="table table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th>Materia</th>
+                                        <th>Argomenti</th>
+                                        <th>Data</th>
+                                        <th>Stato</th>
+                                        <th>Azioni</th>
+                                    </tr>
+                                    </thead>
+                                    {% for corso in corsi %}
+                                        {% if corso.tipo == 1 %}
+                                            <tr>
+                                                <td>{{ corso.materia.nome }} - {{ corso.materia.professore }}</td>
+                                                <td>{{ corso.argomenti }}</td>
+                                                <td>{{ corso.appuntamento }}
+                                                <td>
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar"
+                                                             style="width: {{ (corso.occupati/corso.limite)*100//1 }}%"
+                                                             aria-valuenow="{{ corso.occupati//1 }}"
+                                                             aria-valuemin="0"
+                                                             aria-valuemax="/{{ corso.limite }}">{{ (corso.occupati/corso.limite)*100//1 }}%
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>{% if corso.pid == utente.uid %}
+                                                    <a href="/corso_del/{{ corso.cid }}"><i class="fa fa-ban"
+                                                                                            aria-hidden="true"></i></a>  {% elif utente.tipo==3 %}
+                                                    <a href="/corso_del/{{ corso.cid }}"><i class="fa fa-ban"
+                                                                                            aria-hidden="true"></i></a> {% else %}
+                                                    <a href="/corso_join/{{ corso.cid }}"><i class="fa fa-sign-in"
+                                                                                             aria-hidden="true"></i></a> {% endif %}
+                                                    <a href="/user_inspect/{{ corso.pid }}"><i
+                                                            class="fa fa-graduation-cap"
+                                                            aria-hidden="true"></i></a>
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <a href="/user_edit/{{ utente.uid }}" type="button" class="btn btn-secondary btn-lg btn-block">Modifica
+                il
+                profilo</a>
+            <a href="/informazioni" type="button" class="btn btn-secondary btn-lg btn-block">Informazioni</a>
+            {% if utente.tipo > 0 %}
+                <a href="/corso_add" type="button" class="btn btn-info btn-lg btn-block">Crea un corso</a>
+                {% if utente.tipo > 1 %}
+                    <a href="/materia_list" type="button" class="btn btn-primary btn-lg btn-block">Gestisci
+                        materie</a>
+                    {% if utente.tipo > 2 %}
+                        <a href="/user_list" type="button" class="btn btn-warning btn-lg btn-block">Gestisci
+                            utenti</a>
+                        <a href="/message_add" type="button" class="btn btn-warning btn-lg btn-block">Crea
+                            messaggio</a>
+                        <a href="/server_log" type="button" class="btn btn-warning btn-lg btn-block">Esamina i
+                            log</a>
+                        <a href="/ricerca" type="button" class="btn btn-warning btn-lg btn-block">Query avanzata</a>
+                        <a href="/lettura_registro" type="button" class="btn btn-warning btn-lg btn-block">CSV Corsi</a>
+                        <a href="/brasatura/1" type="button" class="btn btn-danger btn-lg btn-block">Brasatura</a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    <br>
+    <center>Versione di Condivisione R 1.31</center>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "stampo.htm" %}
+{% block title %}Verifica abilitazioni - Condivisione{% endblock %}
+{% block content %}
+    <h1>Verifica abilitazioni del peer {{ peer.nome }} {{ peer.cognome }}</h1> <br>
+    <h3>Il peer è attualmente abilitato per le seguenti materie:</h3>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Professore</th>
+            <th>Giorno</th>
+            <th>Azioni</th>
+        </tr>
+        </thead>
+        {% for materia in autorizzate %}
+            <tr>
+                <td>{{ materia.nome }}</td>
+                <td>{{ materia.professore }}</td>
+                <td>{{ materia.giorno_settimana }}</td>
+                <td><a href="/peer_del/{{ materia.mid }}/{{ peer.uid }}"><i class="fa fa-ban" aria-hidden="true"></i></a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="/peer_remove/{{ peer.uid }}" type="button" class="btn btn-danger btn-lg btn-block">Rimuovi dalla Peer Education</a> <br>
+    <h3>Il peer può venire abilitato per le seguenti materie:</h3>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Professore</th>
+            <th>Giorno</th>
+            <th>Azioni</th>
+        </tr>
+        </thead>
+        {% for materia in materielibere %}
+            <tr>
+                <td>{{ materia[1] }}</td>
+                <td>{{ materia[2] }}</td>
+                <td>{{ materia[3] }}-{{ materia[4] }}</td>
+                <td><a href="/peer_add/{{ materia[0] }}/{{ peer.uid }}"><i class="fa fa-plus" aria-hidden="true"></i></a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

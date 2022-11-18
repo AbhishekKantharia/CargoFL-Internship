@@ -1,0 +1,14 @@
+{% extends "stampo.htm" %}
+{% block title %}Brasatura - Condivisione{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-3">Attenzione!</h1>
+        <p class="lead">L'operazione di eliminazione degli utenti semplici è irreversibile.</p>
+        <hr class="my-4">
+        <p>Se si desidera proseguire, <a href="/brasatura/2">cliccare qui</a>.</p>
+        <div class="alert alert-warning" role="alert">
+            <strong>Attenzione</strong>: La procedura può richedere un po' di tempo (tempo di dump delle mail in un file csv).
+            Per inviare le mail, avviare lo script mailsender.py.
+        </div>
+    </div>
+{% endblock %}

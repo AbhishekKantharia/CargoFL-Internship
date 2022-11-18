@@ -1,0 +1,126 @@
+
+img[name="AI"]{
+
+    width: 50;
+    height: 90%;
+    position: absolute;
+    top:2%;
+    left:56%;
+}
+
+img[name="message_accepted"]{
+
+    position: absolute;
+    width: 22%;
+    height: 37%;
+    top: 50%;
+    left: 65%;
+    -webkit-filter: drop-shadow(3px 3px 3px #505050);
+    filter: drop-shadow(3px 3px 3px #555555);
+}
+
+img[name="message_denied"]{
+
+    position: absolute;
+    width: 22%;
+    height: 37%;
+    top: 50%;
+    left: 65%;
+    -webkit-filter: drop-shadow(3px 3px 3px #505050);
+    filter: drop-shadow(3px 3px 3px #555555);
+}
+
+h1{
+    font-size: 70pt;
+    font-family: 'Times New Roman';
+    color: rgb(52, 52, 53);
+    position: absolute;
+    top: 15%;
+    left: 10%;
+}
+
+h2{
+    font-size: 90pt;
+    font-family: 'Times New Roman';
+    color: rgb(80, 206, 22);
+    position: absolute;
+    top: 25%;
+    left: 18%;
+}
+
+h3{
+    font-size: 90pt;
+    font-family: 'Times New Roman';
+    color: rgb(219, 26, 26);
+    position: absolute;
+    top: 22.1%;
+    left: 19.8%;
+}
+
+.box{
+
+    width: 550px;
+    height: 280px;
+    top: 10%;
+    left: 20%;
+    background-color: hsl(216, 100%, 98%);
+    border-radius: 8pt;
+    padding: 50px;
+    margin: 20px;
+    margin-top: 130px;
+    margin-left: 115px;
+
+}
+
+button[name="backbtn"]{
+
+    border: none;
+    border-radius: 13px;
+    background: rgba(250, 227, 20, 0.993);
+    outline: none;
+    height: 50px;
+    width: 110px;
+    color: rgb(34, 34, 34);
+    font-size: 21px;
+    font-family: 'Times New Roman';
+    position:absolute;
+    top: 72%;
+    left: 43.30%;
+    cursor: pointer;
+    transition-duration:0.4s;
+}
+button[name="backbtn"]:hover{
+
+    background : white;
+    border: 2px solid rgb(250, 227, 20, 0.993);
+    color:rgb(34, 34, 34);
+
+}
+
+
+
+button[name="homebtn"]{
+
+    border: none;
+    border-radius: 13px;
+    background: rgb(52, 52, 53);
+    outline: none;
+    height: 50px;
+    width: 100px;
+    color: white;
+    font-size: 18px;
+    font-family: 'Times New Roman';
+    position:absolute;
+    top: 5%;
+    left: 91%;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+button[name="homebtn"]:hover{
+
+    background : white;
+    border: 2px solid rgb(52, 52, 53);
+    color:rgb(52, 52, 53);
+
+}

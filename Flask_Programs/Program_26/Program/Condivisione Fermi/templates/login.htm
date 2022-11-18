@@ -1,0 +1,40 @@
+{% extends "stampo.htm" %}
+{% block title %}Login - Condivisione{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-3">Ciao!</h1>
+        <p class="lead">Ti diamo il benvenuto su Condivisione, la piattaforma web dell'I.T.I.S. Enrico Fermi per
+            l'organizzazione di ripetizioni.</p>
+        <hr class="my-4">
+        <p>Per proseguire, esegui l'accesso. Non possiedi le credenziali? Nessun problema! Crea ora il tuo account!<br>
+           Nel caso in cui le tue credenziali di accesso risalgano all'anno scolastico precedente, procedi a registrarti nuovamente.</p>
+        <p class="lead">
+        <div class="row">
+            <div class="col-md-6">
+                <form action="/login" method="POST">
+                    <div class="form-group">
+                        <label for="username">Nome Utente</label>
+                        <input type="email" class="form-control" id="username" aria-describedby="emailHelp"
+                               placeholder="Inserisci la tua mail" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password"
+                               name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Accedi</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <a href="/register" type="button" class="btn btn-success btn-lg btn-block">Crea un account</a>
+                <a href="/informazioni" type="button" class="btn btn-outline-info btn-lg btn-block">Informazioni sul
+                    software</a>
+                <a href="https://github.com/LBindustries/Condivisione-Fermi" type="button"
+                   class="btn btn-outline-dark btn-lg btn-block">Condivisione su GitHub</a>
+            </div>
+        </div>
+        <center>Condivisione è un sito creato da Balugani Lorenzo.<br>2017 ©
+            Fermitech Softworks</center>
+        </p>
+    </div>
+{% endblock %}

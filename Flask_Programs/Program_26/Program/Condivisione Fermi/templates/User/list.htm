@@ -1,0 +1,51 @@
+{% extends "stampo.htm" %}
+{% block title %}Lista utenti - Condivisione{% endblock %}
+{% block content %}
+    <h1>Lista utenti di Condivisione</h1>
+    <div class="alert alert-info" role="alert">
+        <strong>Legenda icone</strong> <br>
+        <strong><i class="fa fa-key" aria-hidden="true"></i></strong> - Modifica password utente <br>
+        <strong><i class="fa fa-users" aria-hidden="true"></i></strong> - Abilita o disabilita un utente per la peer
+        education <br>
+        <strong><i class="fa fa-ban" aria-hidden="true"></i></strong> - Elimina un utente dalla piattaforma <br>
+        <strong><i class="fa fa-exclamation" aria-hidden="true"></i></strong> - Rende amministratore un utente <br>
+        <strong><i class="fa fa-university" aria-hidden="true"></i></strong> - Rende professore un utente
+    </div>
+    <div style="overflow-x: auto;">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Classe</th>
+                <th>Username</th>
+                <th>Telegram</th>
+                <th>Tipo</th>
+                <th>Azioni</th>
+            </tr>
+            </thead>
+            {% for entita in utenti %}
+                <tr>
+                    <td>{{ entita.nome }}</td>
+                    <td>{{ entita.cognome }}</td>
+                    <td>{{ entita.classe }}</td>
+                    <td>{{ entita.username }}</td>
+                    <td>{{ entita.telegram_username }}</td>
+                    <td>{% if entita.tipo == 0 %}
+                        <span class="badge badge-primary">Utente</span> {% elif entita.tipo == 1 %}
+                        <span class="badge badge-info">Peer</span> {% elif entita.tipo == 2 %}
+                        <span class="badge badge-success">Prof</span> {% elif entita.tipo == 3 %}
+                        <span class="badge badge-warning">Admin</span>{% endif %}</td>
+                    <td><a href="/user_changepw/{{ entita.uid }}"><i class="fa fa-key" aria-hidden="true"></i></a> <a
+                            href="/user_ascend/{{ entita.uid }}"><i class="fa fa-users" aria-hidden="true"></i></a> <a
+                            href="/user_del/{{ entita.uid }}"><i class="fa fa-ban" aria-hidden="true"></i></a> <a
+                            href="/user_godify/{{ entita.uid }}"><i class="fa fa-exclamation"
+                                                                    aria-hidden="true"></i></a> <a
+                            href="/user_teacher/{{ entita.uid }}"><i class="fa fa-university"
+                                                                     aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

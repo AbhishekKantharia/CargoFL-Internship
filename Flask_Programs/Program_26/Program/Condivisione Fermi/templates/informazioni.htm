@@ -1,0 +1,41 @@
+{% extends "stampo.htm" %}
+{% block title %}Informazioni - Condivisione{% endblock %}
+{% block content %}
+    <div class="page-header">
+        <h1>
+            Informazioni su Condivisione
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="card">
+                <div class="card-header" >Informazioni sul sito</div>
+                <div class="card-body">
+                    Questo sito è stato scritto da <a href="mailto:lorenzo.balugani@gmail.com">Lorenzo Balugani</a> durante l'estate del 2017.<br>
+                    Questo sito utilizza <a href="https://www.python.org/">Python 3.6</a>, <a href="http://flask.pocoo.org/">Flask</a> e <a href="https://www.sqlalchemy.org/">SQLAlchemy</a>.<br>
+                    Il <a href="https://github.com/LBindustries/Condivisione-Fermi">codice sorgente</a> è disponibile su GitHub, rilasciato sotto GPLv3.<br>
+                    <br>Condivisione non fa parte del programma di nessuna lista per la rappresentanza degli studenti del Fermi, in quanto nato libero e svincolato da qualsiasi gruppo e/o ideologia politica.
+                    <br>Questo software è stato appositamente sviluppato per l'ITIS Enrico Fermi, ed è entrato in funzione il 27/11/2017, nel 60° anno dopo la fondazione del Fermi.
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" >Politiche sulla privacy e sull'utilizzo dei cookie</div>
+                <div class="card-body">
+                    Le seguenti policy sono state generate da questo <a href="https://www.websitepolicies.com">sito</a>.
+                    <br><a href="https://www.websitepolicies.com/policies/view/xzC3fpn4">Privacy Policy</a>
+                    <br><a href="https://www.websitepolicies.com/policies/view/xzC3fpn4">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <br>
+            <img width="100%" alt="condivisione-logo" src="{{ url_for('static', filename='Condivisione.png') }}"><br><br>
+            <img width="100%" alt="fermitech-logo" src="{{ url_for('static', filename='Fermitech.png') }}"><br>
+            <center><img width="60%" alt="fermi-logo" src="{{ url_for('static', filename='LogoFermiHiDef.png') }}"><br></center>
+        </div>
+    </div>
+    <br>
+    <br>
+    <center>Condivisione è basato su Gestione 1.05 Permafrost. Gestione e Condivisione sono software di FermiTech Softworks. Versione di Condivisione R 1.30<br></center>
+
+{% endblock %}

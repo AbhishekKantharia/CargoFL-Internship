@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="../static/style2.css" type="text/css">
+    <script src="../static/script.js"> </script>
+    
+    <title>Loan Status Classifier Form</title>
+
+
+</head>
+
+<body onload="form_load()">
+
+    <h1>Client Details</h1>
+
+    <button name="backbtn" type="button" onclick="window.location.href='{{ url_for( 'Home') }}';">Back</button>
+    
+    <img name="Fm_pic" src="../static/Form_picture.png">
+
+    <div class="box2">
+        <form name="form1" action="{{url_for('classifier')}}" onsubmit="return validation()" method="GET">
+
+
+            <label for="gender"> Gender</label> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <select name="gender" required>
+
+                <option value="" disabled selected hidden></option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+
+              </select>   &emsp; &nbsp; &emsp;&emsp;&nbsp;
+
+
+            <label for="matialstatus">Matial Status</label> &emsp;&emsp;
+            <select name="matialstatus" required>
+
+                <option value="" disabled selected hidden></option>
+                <option value="Married">Married</option>
+                <option value="Unmarried">Unmarried</option>
+
+              </select>   &emsp; &nbsp; &emsp;&emsp;&nbsp; <br>
+
+            <label for="dependents">Dependents</label> &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
+            <select name="dependents" required>
+
+                <option value="" disabled selected hidden></option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3+">3+</option>
+
+              </select>   &emsp; &nbsp; &emsp;&emsp;&nbsp;
+
+
+            <label for="education">Education</label> &emsp;&emsp;&emsp;&nbsp;
+            <select name="education" required>
+
+                <option value="" disabled selected hidden></option>
+                <option value="Graduate">Graduate</option>
+                <option value="Not Graduate">Not Graduate</option>
+
+              </select>   &emsp; &nbsp; &emsp;&emsp;&nbsp; <br>
+
+
+            <label for="self_emp_status">Self Employed</label> &emsp;&emsp;&emsp;&emsp;
+            <select name="self_emp_status" required>
+
+                <option value="" disabled selected hidden></option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+
+              </select>   &emsp; &nbsp; &emsp;&emsp;&nbsp;
+
+
+            <label for="property_area">Property Area</label> &emsp;&ensp;&nbsp;
+            <select name="property_area" required>
+
+                <option value="" disabled selected hidden></option>
+                <option value="Urban">Urban</option>
+                <option value="Rural">Rural</option>
+                <option value="Semi Urban">Semi Urban</option>
+
+              </select>   &emsp; &nbsp; &emsp;&emsp;&nbsp; <br>
+
+
+            <label for="credithistory">Credit History</label> &emsp;&emsp;&emsp;&emsp;&nbsp;
+            <select name="credithistory" required>
+
+              <option value="" disabled selected hidden></option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+
+            </select>   &emsp; &nbsp; &emsp;&emsp;&nbsp;
+
+
+            <label for="app_income">Applicant Income</label> &nbsp;
+            <input type="text" id="app_income" name="app_income" required> <br>
+
+            <label for="co_app_ic">Co-Applicant Income</label> &emsp;&nbsp;
+            <input type="text" id="co_app_ic" name="co_app_ic" required> &emsp; &nbsp; &emsp;&emsp;&nbsp;
+
+            <label for="loanamount">Loan Amount</label> &emsp;&emsp;
+            <input type="text" id="loanamount" name="loanamount" required> <br>
+
+            <label for="loan_term">Loan Term</label> &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+            <input type="text" id="loan_term" name="loan_term"  required> &emsp; &nbsp; &emsp;
+
+            <br>
+            <br>
+            <input type="submit" value="Proccess"> &emsp;
+            <input type="reset" onclick=clear_function() value="Clear">
+
+
+        </form>
+    
+    </div>
+
+</body>
+
+</html>

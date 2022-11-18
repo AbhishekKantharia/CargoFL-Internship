@@ -1,0 +1,59 @@
+{% extends "stampo.htm" %}
+{% block title %}Registrazione - Condivisione{% endblock %}
+{% block content %}
+    <form action="/register" method="POST" autocomplete="on">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="username" class="col-form-label">Email</label>
+                <input type="email" class="form-control" id="username" placeholder="mario.rossi@fermi.mo.it" name="username" autocomplete="email">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="password" class="col-form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="••••••" name="password" autocomplete="new-password">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nome" class="col-form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" placeholder="Mario" name="nome" autocomplete="given-name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="cognome" class="col-form-label">Cognome</label>
+                <input type="text" class="form-control" id="cognome" placeholder="Rossi" name="cognome" autocomplete="family-name">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="usernameTelegram" class="col-form-label">Username di Telegram</label>
+                <input type="text" class="form-control" id="usernameTelegram" placeholder="@iltuousername"
+                       name="usernameTelegram">
+                <small id="emailHelp" class="form-text text-muted">Non hai Telegram? Scaricalo per <a
+                        href="https://play.google.com/store/apps/details?id=org.telegram.messenger">Android</a>,
+                    <a href="https://itunes.apple.com/it/app/telegram-messenger/id686449807">iOS</a> o usalo dal
+                    tuo <a href="https://web.telegram.org/">PC</a>.
+                </small>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="mailGenitori" class="col-form-label">Email genitore</label>
+                <input type="email" class="form-control" id="mailGenitori" placeholder="email@example.org"
+                       name="mailGenitori">
+                <small id="emailHelp" class="form-text text-muted">Se l'account non è per uno studente, re-inserisci la tua mail.
+                </small>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="classe" class="col-form-label">Classe</label>
+                <input type="text" class="form-control" id="classe" placeholder="5F" name="classe">
+            </div>
+        </div>
+        <div class="alert alert-danger">
+            Dati come <b>nome</b>, <b>cognome</b>, <b>classe</b>, <b>indirizzo email</b> e <b>username di Telegram</b> sono visibili agli altri utenti.<br>
+            L'iscrizione di minori di 13 anni <strong>deve</strong> essere autorizzata da un genitore o tutore.
+        </div>
+        {{ captcha.recaptcha }}
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Registrati</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

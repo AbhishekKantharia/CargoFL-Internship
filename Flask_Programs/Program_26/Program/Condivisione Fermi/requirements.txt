@@ -1,0 +1,12 @@
+bcrypt
+telepot
+requests
+raven
+raven[flask]
+blinker
+flask_sqlalchemy
+flask_wtf
+flask~=2.0.1
+sqlalchemy
+pytest
+tox

@@ -1,0 +1,9 @@
+Flask==2.0.1
+imbalanced_learn==0.8.0
+numpy==1.19.5
+matplotlib==3.4.1
+seaborn==0.11.1
+pandas==1.2.4
+gunicorn==20.1.0
+imblearn==0.0
+scikit_learn==0.24.2

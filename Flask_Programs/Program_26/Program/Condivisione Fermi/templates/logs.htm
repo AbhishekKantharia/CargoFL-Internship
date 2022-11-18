@@ -1,0 +1,18 @@
+{% extends "stampo.htm" %}
+{% block title %}Log del Server - Condivisione{% endblock %}
+{% block content %}
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th>Data</th>
+            <th>Descrizione evento</th>
+        </tr>
+        </thead>
+        {% for log in logs %}
+            <tr>
+                <td>{{ log.ora }}</td>
+                <td>{{ log.contenuto }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

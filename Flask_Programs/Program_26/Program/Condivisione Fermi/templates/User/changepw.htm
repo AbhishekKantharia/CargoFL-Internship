@@ -1,0 +1,11 @@
+{% extends "stampo.htm" %}
+{% block title %}Registrazione - Condivisione{% endblock %}
+{% block content %}
+    <h2>Immetti la nuova password per {{ entita.nome }} {{ entita.cognome }}</h2>
+    <form action="/user_changepw/{{ entita.uid }}" method="POST">
+        <label for="password" class="col-form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+        <br>
+        <button type="submit" class="btn btn-primary">Modifica la password</button>
+    </form>
+{% endblock %}

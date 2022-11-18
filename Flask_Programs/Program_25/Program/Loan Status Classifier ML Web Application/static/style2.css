@@ -1,0 +1,141 @@
+
+h1{
+    font-size: 65pt;
+    color:rgb(27, 27, 27);
+    position: absolute;
+    top: -1%;
+    left:2%;
+}
+
+.box2 {
+
+    color: rgb(24, 24, 24);
+    top:25%;
+    left:3%;
+    border-radius: 10%;
+    position: absolute;
+    box-sizing: border-box;
+    font-size: 18pt;
+    width: 80%;
+    
+}
+
+.box2 label {
+
+    padding: 1em 0em;  
+}
+
+.box2 input[type=text] {
+    margin-bottom: 20px;
+    padding:1em 1em ;
+    width: 20%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    box-sizing: border-box;
+
+}
+
+
+.box2 select{
+
+    margin-bottom: 20px;
+    padding:1em 1em ;
+    width: 20.2%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    box-sizing: border-box;
+
+}
+
+.box2 input[type=text]:focus{
+    border-color: dodgerblue;
+}
+
+.box2 select:focus{
+    border-color: dodgerblue;
+}
+
+.box2 input[type=submit]{
+    border: none;
+    border-radius: 13px;
+    background:  rgb(92,124,204);
+    outline: none;
+    height: 70px;
+    width: 170px;
+    color: #fff;
+    font-size: 27px;
+    font-family: 'Times New Roman';
+    position:absolute;
+    top: 98%;
+    left: -1%;
+    cursor: pointer;
+    transition-duration:0.4s;
+}
+
+.box2 input[type=submit]:hover{
+    background: white;
+    color:rgb(92,124,204);
+    border: 2px solid rgb(92,124,204);
+
+}
+
+.box2 input[type=reset]{
+    border: none;
+    border-radius: 13px;
+    background: rgb(238, 29, 14);
+    outline: none;
+    height: 70px;
+    width: 170px;
+    color: #fff;
+    font-size: 27px;
+    font-family: 'Times New Roman';
+    position:absolute;
+    top: 98%;
+    left: 13.85%;
+    cursor: pointer;
+    transition-duration:0.4s;
+}
+
+.box2 input[type=reset]:hover{
+    background: white;
+    color:rgb(238, 29, 14);
+    border: 2px solid rgb(238, 29, 14);
+
+}
+
+button[name="backbtn"]{
+
+    border: none;
+    border-radius: 13px;
+    background: rgba(250, 227, 20, 0.993);
+    outline: none;
+    height: 70px;
+    width: 170px;
+    color: rgb(34, 34, 34);
+    font-size: 27px;
+    font-family: 'Times New Roman';
+    position:absolute;
+    top: 80.7%;
+    left: 25.9%;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+button[name="backbtn"]:hover{
+    background: white;
+    border: 2px solid rgba(250, 227, 20, 0.993);
+
+}
+
+img[name="Fm_pic"]{
+    width: 21%;
+    height: 65%;
+    position: absolute;
+    top:13%;
+    left:75%;
+}
+

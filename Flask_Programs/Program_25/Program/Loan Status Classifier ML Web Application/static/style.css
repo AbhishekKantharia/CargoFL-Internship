@@ -1,0 +1,61 @@
+
+.title h1{
+    font-size: 70pt;
+    position: absolute;
+    top:10%;
+    left:4%;
+    
+}
+
+.title h2{
+    font-size: 70pt;
+    color:rgb(92,124,204);
+    position: absolute;
+    top:20%;
+    left:4%;
+    
+}
+
+.title h3{
+
+    font-size: 13pt;
+    font-family:'Times New Roman';
+    color:rgb(52, 52, 53);
+    position: absolute;
+    top:60%;
+    left:4%;
+}
+
+.title button{
+
+    border: none;
+    border-radius: 40px;
+    background:  rgb(251, 126, 116);
+    outline: none;
+    height: 70px;
+    width: 200px;
+    color: rgb(255, 255, 255);
+    font-size: 27px;
+    font-family: 'Times New Roman';
+    position:absolute;
+    top: 47%;
+    left: 4%;
+    cursor: pointer;
+    transition-duration:0.4s;
+}
+
+.title button:hover{
+
+    background : white;
+    border: 2px solid rgb(251, 126, 116);
+    color: black;
+}
+
+.bgimage img {
+
+    width: 60%;
+    height: 60%;
+    margin-left: 40%;
+    margin-top: 3%;
+}
+

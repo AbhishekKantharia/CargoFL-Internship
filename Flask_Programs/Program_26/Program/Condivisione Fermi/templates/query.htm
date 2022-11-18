@@ -1,0 +1,75 @@
+{% extends 'stampo.htm' %}
+{% block title %}Query - Condivisione{% endblock %}
+{% block content %}
+    <div class="page-header">
+        <h1>
+            Query manuale
+        </h1>
+    </div>
+    <form method="post">
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">SELECT</span>
+                <input type="text" class="form-control" placeholder="* FROM ..." name="query" {% if query %}value="{{ query }}{% endif %}">
+                <span class="input-group-addon">;</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <p>
+                <input class="btn btn-primary" type="submit">
+                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#database-structure">
+                    Visualizza struttura database (SQLite)
+                </button>
+            </p>
+        </div>
+    </form>
+    <div id="database-structure" class="collapse">
+        <img src="{{ url_for('static', filename='nuovodb.png') }}">
+    </div>
+    {% if result %}
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                Risultati della query
+            </div>
+            <div class="panel-body">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            {% for row in result.keys() %}
+                                <th>
+                                    {{ row }}
+                                </th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in result %}
+                            <tr>
+                                {% for column in row %}
+                                    <td>
+                                        {% if column is string %}
+                                            <code class="string">{{ column }}</code>
+                                        {% elif column is number %}
+                                            <code class="number">{{ column }}</code>
+                                        {% else %}
+                                            <code class="bytes">{{ column }}</code>
+                                        {% endif %}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% elif error %}
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                Errore nell'esecuzione della query
+            </div>
+            <div class="panel-body">
+                {{ error }}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

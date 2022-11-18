@@ -1,0 +1,13 @@
+{% extends "stampo.htm" %}
+{% block title %}Ispeziona Utente - Condivisione{% endblock %}
+{% block content %}
+    <h1>Informazioni sull'Utente</h1>
+    <div class="card" style="width: 100%;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h2>Nome e cognome</h2><br>{{ entita.nome }} {{ entita.cognome }}</li>
+            <li class="list-group-item"><h2>Classe</h2>{{ entita.classe }}</li>
+            <li class="list-group-item"><h2>Tipologia</h2>{% if entita.tipo == 0 %}Utente comune{% elif entita.tipo == 1 %}Peer educator{% elif entita.tipo == 2 %}Professore{% elif entita.tipo == 3 %}Amministratore{% endif %}</li>
+            <li class="list-group-item"><h2>Contatti</h2>Indirizzo di posta elettronica: {{ entita.username }}<br>Username di telegram: {{ entita.telegram_username }}</li>
+        </ul>
+    </div>
+{% endblock %}

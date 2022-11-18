@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="../static/style3.css" type="text/css">
+
+    <title>Loan Status Classifier Result</title>
+</head>
+
+<body>
+
+    <img name="AI" src="../static/Result_AI-01.png">
+
+    <h1>Request Status</h1>
+
+    {% if value == "Accepted" %}
+
+        <h2>Accepted</h2>
+        <img name="message_accepted" src="../static/Message Images/Accept.png">
+
+    {% elif value== "Rejected" %}
+
+        <h3>Rejected</h3>
+        <img name="message_denied" src="../static/Message Images/Error.png">
+
+    {% endif %}
+    
+    <div class="box"></div>
+
+    <button type="button"  name="backbtn" onclick="window.location.href='{{ url_for( 'Form' ) }}';"> Back </button>
+    <button type="button"  name="homebtn" onclick="window.location.href='{{ url_for( 'Home' ) }}';"> Home </button>
+
+</body>
+
+</html>

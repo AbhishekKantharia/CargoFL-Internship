@@ -1,0 +1,20 @@
+{% extends "stampo.htm" %}
+{% block title %}Nuovo corso - Condivisione{% endblock %}
+{% block content %}
+<h1>Aggiunta corso</h1>
+<form action="/corso_add" method="POST">
+    <div class="form-group">
+        <label for="argomenti">Argomenti del corso</label>
+        <textarea class="form-control" id="argomenti" rows="3" name="argomenti"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="Scelta">Materia</label>
+        <select class="form-control" id="materia" name="materia">
+            {% for materia in materie %}
+                <option value={{materia.mid}}>{{materia.nome}} - {{materia.professore}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Invia</button>
+</form>
+{% endblock %}
