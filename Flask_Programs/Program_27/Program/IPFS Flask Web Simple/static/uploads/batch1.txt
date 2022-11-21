@@ -1,0 +1,7 @@
+CREATE DATABASE db_perpustakaan;
+\connect db_perpustakaan
+CREATE TABLE buku (
+	kode_buku VARCHAR(5),
+	judul VARCHAR(30),
+	pengarang VARCHAR(30));
+\d buku

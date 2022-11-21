@@ -1,0 +1,26 @@
+ask selesai
+- mengubah requirement field branch menjadi tidak mandatory dan field departemen menjadi mandatory di RFQ (spi_mod_requirement)
+- mengubah requirement field branch menjadi tidak mandatory dan field departemen menjadi mandatory di purchase order (spi_mod_requirement)
+- mengubah requirement field unit_price menjadi tidak mandatory pada order line RFQ (purchase)
+- menampilkan nama company dan alamat yang dimana sebelumnya tidak tampil (spi_printout_pr)
+- mengubah sekaligus memperbaiki error format tanggal dan deskripsi yang sebelumnya salah dan tidak tampil(spi_printout_pr)
+- menambahkan field materai dan diskon yang dapat diinput user dan terhitung pada total (sale.order)
+- menyembunyikan field margin, taxes dan pph pada sale order (tax_extension, sale_margin)
+- mengubah tampilan print out pada purchase order (spi_print__po)
+- mengubah tampilan print out pada sale order (spi_print__so)
+- membuat default field print discount dan print discount amount menjadi checked/True(multi discount)
+- membuat default field warehouse di sale order menjadi kosong (sale_stock)
+- memperbaiki error di debit note pada saat mengisi field invoice no (credit_debit_note)
+- memperbaiki tab variant yang tidak muncul jika field is product pack tidak True/checked (product_pack)
+- memperbaiki list pada tab variant yang tidak muncul (product_pack)
+- menambahkan field departemen di menu inventory adjusment (stock_account)
+
+task belum selesai
+- memperbaiki error pada pivot sales saat memilih parameter branch dan warehouse
+- menambahkan parameter baru(product) pada pivot purchase order
+- menampilkan list alamat faktur pajak pada list tabel customer
+- menambahkan field diskon dan materai yang dapat di-input user di menu customer invoice (sudah ditambahkan tapi belum terhitung di total)
+- memperbaiki bug pada sale order line dimana semua total menjadi 0
+- pada saat isi field departemen di header auto fill pada field departemen di product line. Saat ini auto fill nya pada saat add item dan pada saat isi departemen di order line pindahkan auto fill nya dan buat mandatory departemen yang ada di create order line (hanya membuat mandatory saja yang sudah)
+- memperbaiki perhitungan discount multi level (sudah diperbaiki tapi multi discount masih mengubah field dicount%. sudah memperbaiki tampilan multi dicount yang tidak merubah discount% tapi perhitungannya berbeda)
+- menampilkan hanya alamat customer pada saat memilih customer pada field invoice dan shipping address dan tidak menampilkan alamat lain 

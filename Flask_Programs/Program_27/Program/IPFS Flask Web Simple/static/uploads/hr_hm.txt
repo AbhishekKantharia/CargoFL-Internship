@@ -1,0 +1,49 @@
+if __name__ == '__main__':
+    res = []
+    for i in range(int(input())):
+        cmd = input().split(" ")
+        if 'insert' in cmd: res.insert(int(cmd[1]), int(cmd[2]))
+        elif 'print' in cmd: print(res)
+        elif 'remove' in cmd: res.remove(int(cmd[1]))
+        elif 'append' in cmd: res.append(int(cmd[1]))
+        elif 'sort' in cmd: res = sorted(res)
+        elif 'pop' in cmd: res.pop()
+        elif 'reverse' in cmd:
+            dum = res[::-1]
+            res = dum
+            
+
+def person_lister(f):
+    def inner(people):
+        res = []
+        persons = sorted(people, key= lambda x:int(x[2]))
+        for person in persons:
+            person = ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
+            res.append(person)
+        return res
+    return inner
+    
+s1 = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_'
+s2 = s1[:-2]
+s3 = s2[:-10]
+
+def fun(s):
+    try:
+        check = s.split("@")
+        ex = check[1].split(".")
+        username, web, ext = check[0], ex[0], ex[1]
+        # print(username, web, ext)
+        for i in username:
+            if i not in s1: return False
+        for i in web:
+            if i not in s2: return False
+        if len(ext) > 3: return False
+        for i in ext:
+            if i not in s3: return False
+        return True
+            
+    except:
+        return False
+    
+
+

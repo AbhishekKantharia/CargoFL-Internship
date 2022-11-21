@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="NoobScience">
+    <meta name="description" content="Student and Open Source Enthusiast. I Like to Code Stuff. Check out my work!">
+    <meta name="title" content="NoobScience">
+    <meta name="keywords" content="noobscience, NoobScience, newtoallofthis123, technology, website">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="author" content="NoobScience">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://newtoallofthis123.github.io/About/">
+    <meta property="og:title" content="NoobScience">
+    <meta property="og:description" content="Student and Open Source Enthusiast. I Like to Code Stuff. Check out my work!">
+    <meta property="og:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://newtoallofthis123.github.io/About/">
+    <meta property="twitter:title" content="NoobScience">
+    <meta property="twitter:description" content="Student and Open Source Enthusiast. I Like to Code Stuff. Check out my work!">
+    <meta property="twitter:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="assets/icons/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ui_styles.css">
+    <link rel="stylesheet" href="buttons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;400&family=JetBrains+Mono&family=Josefin+Sans:wght@100;400&family=Oxygen+Mono&family=Poppins:wght@100;400&family=Roboto:wght@100;400&family=Square+Peg&display=swap" rel="stylesheet">
+    <title>YTPSLive | Download YouTube Videos</title>
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #212121;">
+    <div class="container-fluid">
+        <a class="navbar-brand nav_title" href="/"><i class="bi bi-youtube"></i> Downloader</a>
+        <div class="d-flex">
+            <div style="align-items: center;"><a href="https://github.com/newtoallofthis123/ytpsLive" class="lead text" style="text-decoration: none; color: rgb(248, 245, 245);"><img src="https://github.com/newtoallofthis123/Assets/raw/main/Image/noobscience.png" alt="noobscience avatar" width="44" height="44" style="border-radius: 50%;"><img src="logo-github.svg" alt=""></a></div>
+        </div>
+    </div>
+</nav>
+<body style="background-color: #212121;">
+    <div class="main_div">
+        <h2 class="title text">YTPSLive</h2>
+        <div class="url_div" style="margin: 5%;">
+            <button>
+                <i class="bi bi-search"></i>
+            </button>
+            <input class="input" name="url" id="url" placeholder="Enter The Url" required="" type="text">
+            <button class="reset" type="reset">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <div style="text-align: center;">
+            <button class="submit_btn" id="submit_btn">Download The Video</button>
+        </div>
+        <div id="loader" class="row">
+            <h2 class="display-2 text" style="text-align: center;">Finding Your Video</h2>
+            <div class="loader col-md-8 mx-auto">
+                <span></span>
+            </div>
+        </div>
+        <div id="download_div"></div>
+    </div>
+</body>
+<script>
+    $(document).ready(function(){
+        $("#loader").toggle()
+        $(document).ajaxStart(function() {
+            $("#loader").toggle()
+        });
+        $(document).ajaxStop(function() {
+            $("#loader").toggle()
+        });
+        $("#submit_btn").click(function(){
+            $.ajax({
+                type: "get",
+                url: "https://ytspider.herokuapp.com/download?url=" + $("#url").val(),
+                success: function(response) {
+                    $("#download_div").text("") 
+                    $("#download_div").append('<div class="h-100 d-flex justify-content-center align-items-center" style="margin: 5%; text-align: center;"><div class="card"><div class="card-image" style="padding-top: 12px;"><p><span class="sub_heading">Channel: </span><span>' + response.url_info["channel"] + '</span></p><p><span class="sub_heading">Views: </span><span>' + response.url_info["view_count"] + '</span></p><p><span class="sub_heading">Upload Date: </span><span>' + response.url_info["upload_date"] + '</span></p></p><div class="download_div"><button class="download-button"><div class="docs"><i class="bi bi-download"></i>Downloads</div><div class="download"><a href="' + response.url_stream[0] +'" class="downloads_btn"><i class="bi bi-file-music"></i></a><a href="' + response.url_audio_stream[0] + '" class="downloads_btn"><i class="bi bi-file-earmark-play"></i></a></div></button></div></div><div class="card-description"><p class="text-title">' + response.url_info["title"] + '</p><p class="text-body"><img src=' + response.url_info["thumbnail"] + ' alt="Thumbnail"></div></div></div></div>')
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        })
+    })
+</script>
+</html>

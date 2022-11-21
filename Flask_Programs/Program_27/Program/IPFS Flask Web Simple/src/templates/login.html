@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                <div class="notification is-danger">
+                    <a href="/login" class="delete"></a>
+                    {{ message }}
+                </div>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block body %}{% endblock %}
+    </head>
+    <body>
+        <nav class="navbar is-link" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a target="_blank" class="navbar-item" href="https://docs.ipfs.io/concepts/what-is-ipfs/">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Ipfs-logo-1024-ice-text.png/120px-Ipfs-logo-1024-ice-text.png?20180220024806" width="30" height="40">
+                </a>
+            
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+        
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a href="/register" class="navbar-item">Register</a>
+                    <a href="#" class="navbar-item">About</a>
+                </div>
+        </nav>
+        <section class="hero is-small">
+            <div class="hero-body">
+                <p class="title">Login</p>
+                <p class="subtitle">Untuk masuk</p>
+            </div>
+        </section>
+        <div class="container is-max-widescreen">
+            <div class="notification ">
+                <form class="box" action = "/login-submit" method = "POST">
+                    <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control">
+                        <input class="input" type="text" name="email" placeholder="your email">
+                    </div>
+                    </div>
+                
+                    <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control">
+                        <input class="input" type="password" name="password" placeholder="********">
+                    </div>
+                    </div>
+                
+                    <button class="button is-primary" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

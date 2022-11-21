@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Find File From IPFS</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head>
+    <body>
+        <nav class="navbar is-link" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a target="_blank" class="navbar-item" href="https://docs.ipfs.io/concepts/what-is-ipfs/">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Ipfs-logo-1024-ice-text.png/120px-Ipfs-logo-1024-ice-text.png?20180220024806" width="30" height="40">
+                </a>
+            
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+        
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a href="/" class="navbar-item">Files</a>
+                    <a href="/find" class="navbar-item">Search</a>
+                </div>
+        
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a href="/logout" class="button is-light">Log out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero is-small">
+            <div class="hero-body">
+                <p class="title">Search</p>
+                <p class="subtitle">Input a valid CID</p>
+            </div>
+        </section>
+
+        <div class="container is-max-widescreen">
+            <div class="notification ">
+                <form action = "http://localhost:5000/find-ipfs" method = "POST" enctype = "multipart/form-data">
+                    <input class="input" type="text" name="text" placeholder="Input CIDs" width="75%">
+                    <button  type="submit" class="button">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

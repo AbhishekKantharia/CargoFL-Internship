@@ -1,0 +1,165 @@
+.nav_title{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.8rem;
+}
+
+.main_div{
+    margin: 5%;
+    background-color: #212121;
+    min-height: 40vh;
+    padding: 2%;
+    border-radius: 24px;
+}
+
+.text{
+    color: #f0f0f0;
+}
+
+.main_text_div{
+    padding: 3%;
+    padding-right: 3%;
+    padding-left: 3%;
+    margin: 12px;
+    background-color: #212121;
+}
+
+.main_text_div_border {
+    background: linear-gradient(to right, #e90505, #03f7ff);
+    padding: 1px;
+    border-radius: 12px;
+    margin: 2%;
+}
+
+.link{
+    color: #2501f0;
+    text-decoration: none;
+    transition-delay: 50ms;
+    transition-duration: 1s;
+}
+
+.link:hover{
+    color: #083ef1;
+}
+
+.title{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 4.2rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+@media only screen and (max-width: 700px) {
+    .title{
+        font-size: 2.4rem;
+    }
+    .lead{
+        font-size: 1rem;
+    }
+}
+
+._underline {
+    display: inline-block;
+    position: relative;
+    color: royalblue;
+}
+._underline:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: royalblue;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+._underline:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.wrap{
+    animation: caret 1s steps(1) infinite;
+    border-right: 0.08em solid #fff;
+    padding-right: 1px;
+}
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+}
+
+.dark{
+    background-color: #212121;
+}
+
+.card-text{
+    font-size: 1rem;
+}
+
+.color{
+    background: linear-gradient(to right, #e90505, #03f7ff);
+    border-radius: 12px;
+    margin: 2%;
+    transition-delay: 50ms;
+    transition-duration: 75ms;
+}
+.color:hover{
+    padding: 5px;
+    cursor: pointer;
+}
+
+.accordion-button{
+    background-color: #212121;
+    color: #f0f0f0;
+}
+
+.social_div{
+    margin: 5%;
+    margin-bottom: 0px;
+    padding: 3%;
+    padding-top: 0px;
+    background-color: #f0f0f0;
+    border-radius: 12px;
+}
+
+.skills_div{
+    padding: 5%;
+    padding-top: 0px;
+    margin-bottom: 2%;
+}
+
+.technologies_div{
+    padding: 3%;
+    background-color: #f0f0f0;
+}
+
+li{
+    font-size: 1.4rem;
+    list-style: none;
+    letter-spacing: 2px;
+}
+
+.downloads_btn{
+    color: #f0f0f0;
+    font-size: 1.6rem;
+    text-decoration: none;
+    transition-delay: 50ms;
+    transition-duration: 1s;
+    margin: 12px;
+}
+.downloads_btn:hover{
+    color: #ddd1d1;
+}
+
+#download_div img{
+    width: 80%;
+    height: 80%;
+    border-radius: 24px;
+}
+
+.sub_heading{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 18px;
+}
