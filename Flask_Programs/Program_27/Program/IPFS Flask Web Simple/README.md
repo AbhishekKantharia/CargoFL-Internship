@@ -6,7 +6,7 @@ Simple website application for storing files in IPFS using flask and posgresql.
 ### Setup
 ```sh
   # clone repository 
-  $ git clone https://github.com/MohFahmi27/IPFS-Flask-Web-Simple.git
+  $ git clone https://github.com/AbhishekKantharia/IPFS Flask Web Simple.git
   # generate virtual environment.
   $ python -m venv venv
   # activate virtual environment
@@ -35,7 +35,7 @@ Running website in local steps:
 ```
 MIT License
 
-Copyright (c) 2022 Mohammad Fahmi
+Copyright (c) 2022 Abhishek Kantharia
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
