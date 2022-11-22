@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+<head>
+	<title>{% block title %}Secrets{% endblock %}</title>
+	<style>
+		{% block styling %}
+		body{
+		background:purple;
+		}
+		{% endblock %}
+	</style>
+</head>
+<body>
+{% block content %}
+<div class="jumbotron">
+	<div class="container">
+		<h1>Welcome</h1>
+		<p>Are you ready to discover my secret?</p>
+		<button class="btn btn-primary btn-lg" href=" {{ url_for('login') }} ">Login</button>
+	</div>
+</div>
+{% endblock %}
+</body>
+</html>
