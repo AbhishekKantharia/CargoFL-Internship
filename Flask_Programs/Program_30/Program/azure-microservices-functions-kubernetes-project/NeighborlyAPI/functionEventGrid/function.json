@@ -1,0 +1,12 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "event",
+      "direction": "in",
+      "eventHubName": "myeventhub", 
+	    "connection": "Endpoint=sb://<NAME>.servicebus.windows.net/;SharedAccessKeyName=allpolicy;SharedAccessKey=<YOUR ACCESS KEY>;EntityPath=myeventhub"
+    }
+  ]
+}

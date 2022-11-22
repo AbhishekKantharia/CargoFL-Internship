@@ -1,0 +1,50 @@
+{
+	"info": {
+		"_postman_id": "95679810-eef4-40fb-aa2a-c6b603a841b8",
+		"name": "Azure Event Grid Topic",
+		"description": "This is a simple collection for making a publish event request to an Azure Event Grid Topic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Publish Event to Azure Event Grid Topic",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "aeg-sas-key",
+						"value": "enter_your_access_key_here",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n {\r\n     \"id\": \"12346\",\r\n     \"eventType\": \"Microsoft.EventGrid/topics\",\r\n     \"subject\": \"pubSubTest/event\",\r\n     \"eventTime\": \"2020-03-06T12:08:20+00:00\",\r\n     \"data\": {\r\n         \"name\": \"Hello World from Kathleen West\"\r\n     },\r\n     \"dataVersion\": \"1.0\",\r\n     \"metadataVersion\": \"1\",\r\n     \"topic\": \"/subscriptions/<your subscription id here>/resourceGroups/<your resource group name here>/providers/Microsoft.EventGrid/topics/<your event grid topic name>\"\r\n }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://<your event grid topic api public endpoint>/api/events?api-version=2018-01-01",
+					"protocol": "https",
+					"host": [
+						"<your event grid topic api public endpoint>"
+					],
+					"path": [
+						"api",
+						"events"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2018-01-01"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
