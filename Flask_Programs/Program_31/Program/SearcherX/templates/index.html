@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="Description" content="Enter your description here" />
+    <link rel="icon" type="image/x-icon" href=  "{{ url_for('static', filename='connexion_internet_15639.ico') }}"  >
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide" />
+    <title>SearcherX</title>
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script> -->
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <div class="container-fluid" id="home">
+        <div class="row">
+            <!-- Bootstrap Static Header -->
+            <div style="background: url(https://bootstrapious.com/i/snippets/sn-static-header/background.jpg)"
+                class="jumbotron bg-cover text-white">
+                <div class="container py-2 text-center">
+                    <h1 class="display-1 font-weight-bold">Searcher<strong>X   <i class="fab fa-affiliatetheme text-warning"></i></strong></h1>
+                    <p class="font-italic mb-0 text-white-50">Search the web in a different way</p>
+                   
+                </div>
+            </div>
+
+            <div>
+                <form action="/" method="post">
+                    <div class="mt-3">
+                        <label for="pwd" class="form-label">
+                            <strong>Search the web <i class="fas fa-search text-secondary"></i></strong>
+                        </label>
+                        <input type="text" class="form-control btn-outline-warning" id="pwd"
+                            placeholder="Enter the search keyword " name="pswd" required />
+                    </div>
+
+                    <div class="d-grid gap-2 container">
+                        <button type="submit" class="btn btn-md btn-primary mt-2" id="btn1">
+                            <strong>Search <i class="fas fa-external-link-square-alt"></i></strong>
+                        </button>
+                    </div>
+                    <hr />
+                </form>
+            </div>
+
+            <div id="myDIV" style="display: none">
+                <div class="" role="status">
+                    <h5 class="text-success">
+                        Searching the <i class="fas fa-globe"></i>
+                    </h5>
+                </div>
+                <div role="status">
+                    <img src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700"
+                        alt="loading" srcset="" width="250" />
+                </div>
+            </div>
+
+            <div class="m-3 p-1 col-11">
+                <!-- {{lol}} -->
+                {% if sz|length == 0 %}
+                <div id="nss" style="display: block">
+                    <h6>No Searches Yet</h6>
+                </div>
+
+                {% else %}
+                <div id="nss" style="display: none">
+                    <h6>No Searches Yet</h6>
+                </div>
+                <h5 class="text-center bg-warning text-white mb-3">
+                    Showing search results for {{si}}
+                </h5>
+
+                {% for title, link ,info in lol %}
+                <h6>{{loop.index}}.<a href="{{link}}" target="_blank">{{title}}</a></h6>
+                <!-- <p>{{info}}</p> -->
+                <p><i>{{info}}</i></p>
+                <a class="text-secondary" href="{{link}}">{{link}}</a>
+                <br />
+                <br />
+                {% endfor %} {% endif %}
+            </div>
+
+            <div>
+                <footer class="fixed-bottom text-center bg-secondary">
+                     <a href="https://github.com/LpCodes" class="text-white" target="_blank">© Created By LpCodes</a>
+                </footer>
+                <footer class="py-2 bg-dark flex-shrink-0 fixed-bottom">
+                    <div class="container text-center">
+                      <a href="https://github.com/LpCodes" class="text-white-50">© Created By LpCodes</a>
+                    </div>
+                  </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script>
+        var mybut = document.getElementById("btn1");
+        const x = document.getElementById("myDIV");
+        const y = document.getElementById("nss");
+
+
+
+
+        mybut.addEventListener("click", function () {
+            const Inputval = document.getElementById("pwd");
+            console.log("Clicked")
+            console.log(x.style.display);
+            console.log(y.style.display);
+
+            if (Inputval.value == "") {
+                console.log("Empty Input");
+            } else {
+                if (x.style.display == "none") {
+                    x.style.display = "block";
+                }
+                if (y.style.display == "block") {
+                    y.style.display = "none";
+                }
+            }
+        });
+    </script> -->
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

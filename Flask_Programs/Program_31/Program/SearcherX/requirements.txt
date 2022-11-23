@@ -1,0 +1,3 @@
+Flask==2.0.2
+wikipedia==1.4.0
+Gunicorn
