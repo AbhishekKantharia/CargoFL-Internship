@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+yapf = "*"
+flake8 = "*"
+
+[packages]
+requests = "*"
+flask = "*"
+python-dateutil = "*"
+requests-cache = "*"
+
+[requires]
+python_version = "3.8.6"
