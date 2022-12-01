@@ -82,9 +82,3 @@ To integrate with MajorLeagueCyber, simply register an account, create an event,
 OAUTH_CLIENT_ID = None
 OAUTH_CLIENT_SECRET = None
 ```
-
-## Credits
-
-- Logo by [Laura Barbera](http://www.laurabb.com/)
-- Theme by [Christopher Thompson](https://github.com/breadchris)
-- Notification Sound by [Terrence Martin](https://soundcloud.com/tj-martin-composer)
