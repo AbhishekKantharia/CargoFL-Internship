@@ -1,0 +1,16 @@
+-rrequirements.txt
+Sphinx
+alabaster
+cov-core
+coverage
+flake8
+flake8-bugbear
+freezegun
+py
+pytest
+pytest-cov
+pytest-mock
+pytest-xdist
+psutil
+responses
+tox>=3.0.0
