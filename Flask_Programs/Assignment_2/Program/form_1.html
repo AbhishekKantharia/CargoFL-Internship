@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DO Master Data</title>
+</head>
+<body>
+<h1>DO Master Data</h1>
+<div>
+  <form>
+    <input type="text" name="search" placeholder="Search DO Master Data">
+    <button type="submit">Search</button>
+  </form>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>DO Number</th>
+	<th>DO Type</th>
+    </tr>
+    <tr>
+      <th>Permit Number</th>
+      <th>Material</th>
+    </tr>
+    <tr>
+      <th>Consigner Name</th>
+      <th>Consignee Name</th>
+    </tr>
+    <tr>
+      <th>DO Issue Date</th>
+	<th>DO Validity Date</th>
+    </tr>
+    <tr>
+	<th>From City</th>
+	<th>To City</th>
+    </tr>
+    <tr>
+	<th>Total DO Qty (MT)</th>
+	<th>Allocated DO Qty (MT)</th>
+  </thead>
+  <tbody>
+    <!-- Loop through DO Master data and display in table -->
+    <tr>
+      <td>1</td>
+      <td>DO001</td>
+      <td>01/01/2021</td>
+      <td>Sample DO Description</td>
+      <td>Active</td>
+    </tr>
+  </tbody>
+</table>
+<!-- Server-side pagination -->
+<div>
+  <button type="button" disabled>Previous</button>
+  <button type="button" disabled>Next</button>
+</div>
+<!-- Add DO Master button -->
+<div>
+  <button type="button" onclick="openModal()">Add DO Master</button>
+</div>
+<!-- Modal for adding DO Master data -->
+<div id="modal" style="display: none;">
+  <form>
+    <label for="doNumber">DO Number</label>
+    <input type="text" name="doNumber" id="doNumber" required>
+    <label for="doDate">DO Date</label>
+    <input type="date" name="doDate" id="doDate" required>
+    <label for="doDescription">DO Description</label>
+    <textarea name="doDescription" id="doDescription" required></textarea>
+    <label for="doStatus">DO Status</label>
+    <select name="doStatus" id="doStatus" required>
+      <option value="Active">Pending</option>
+      <option value="Inactive">Approved</option>
+    </select>
+    <label for="enabled">Enabled</label>
+    <input type="checkbox" name="enabled" id="enabled">
+    <button type="submit">Submit</button>
+    <button type="button" onclick="closeModal()">Close</button>
+  </form>
+</div>
+<!-- Script for showing and hiding modal -->
+<script>
+function openModal() {
+  document.getElementById("modal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+</body>
+</html>
